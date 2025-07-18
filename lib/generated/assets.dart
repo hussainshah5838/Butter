@@ -2,8 +2,14 @@
 class Assets {
   Assets._();
 
+  static const String imagesAdd = 'assets/images/Add.png';
+  static const String imagesChat = 'assets/images/Chat.png';
+  static const String imagesList = 'assets/images/List.png';
+  static const String imagesMarge = 'assets/images/Marge.png';
   static const String imagesMic = 'assets/images/Mic.png';
   static const String svgApple = 'assets/svg/Apple.svg';
+  static const String svgArrowDown = 'assets/svg/arrow_down.svg';
+  static const String svgArrowUp = 'assets/svg/arrow_up.svg';
   static const String svgGoogle = 'assets/svg/google.svg';
   static const String svgSoundwaves = 'assets/svg/Soundwaves.svg';
   static const String svgStop = 'assets/svg/Stop.svg';

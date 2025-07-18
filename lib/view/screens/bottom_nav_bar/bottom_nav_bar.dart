@@ -8,10 +8,11 @@ import '../../widget/common_image_view_widget.dart';
 import '../../widget/custom_appbar.dart';
 import '../../widget/drawer.dart';
 import '../../widget/my_text_widget.dart';
+import '../home/home_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   final int initialIndex;
-  const BottomNavBar({Key? key, this.initialIndex = 2}) : super(key: key);
+  const BottomNavBar({Key? key, this.initialIndex = 0}) : super(key: key);
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
@@ -31,32 +32,27 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void updateItems() {
     items = [
       {
-        'image': "Assets.imagesMenu",
-        'label': 'menu'.tr,
+        'image': Assets.imagesList,
+        'label': 'List'.tr,
       },
 
       {
-        'image': "Assets.imagesEbooking",
-        'label': 'bookings'.tr,
+        'image': Assets.imagesAdd,
+        'label': ''.tr,
       },
       {
-        'image': currentIndex == 2 ? "Assets.imagesHomee" :  "Assets.imagesHome",
-        'label': 'home'.tr,
+        'image':  Assets.imagesChat ,
+        'label': 'Marge'.tr,
       },
-      {
-        'image': "Assets.imagesMycodes",
-        'label': 'my_code'.tr,
-      },
-      {
-        'image': "Assets.imagesChatB",
-        'label': 'chats'.tr,
-      },
+
     ];
   }
 
   final List<Widget> screens = [
 
-
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
     //AlertScreen(),
 
   ];
@@ -65,55 +61,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-    final List<String> titles = [
-      'menu'.tr,
-      'bookings'.tr,
-      "home".tr,
-      'my_code'.tr,
-      'chats'.tr,
-    ];
-
     return Scaffold(
       key: _scaffoldKey,
       appBar: CustomAppBar3(
-        title: currentIndex == 2
-            ? CommonImageView(
-          //imagePath: Assets.imagesLogo,
-          height: 49,
-        )
-            : MyText(
-          text: titles[currentIndex].tr,
-          size: 20,
-          weight: FontWeight.w600,
-          color: kSecondaryColor, // or your desired color
-        ),
         onDrawerPressed: () {
           _scaffoldKey.currentState?.openDrawer();
         },
-        actions: [
-          GestureDetector(
-            onTap: (){
-              //Get.to(()=>AlertScreen());
-            },
-            child: CommonImageView(
-             // imagePath: Assets.imagesNotifi,
-              height: 24,
-              width: 24,
-            ),
-          ),
-          const SizedBox(width: 10),
-          if (currentIndex == 2) ...[
-
-            CommonImageView(
-              //svgPath: Assets.svgSearch,
-              height: 24,
-              width: 24,
-            ),
-            const SizedBox(width: 10),
-          ],
-        ],
       ),
-
       drawer: CustomDrawer(
         onItemSelected: (int index) {
           setState(() {
@@ -170,40 +124,42 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 activeIcon: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    index ==  0 ?
+                    index ==  1 ?
                     Image.asset(
                       items[index]['image'],
-                      //color: kTertiaryColor,
-                      width: 27,
+                      width: 55,
                     ) :
                     Image.asset(
                       items[index]['image'],
-                      color: kYellowColor,
+                      color: kBlackColor,
                       width: 27,
                     ),
-                    const SizedBox(height: 2), // Space between icon and dot
+                    if(index != 1)
+                    const SizedBox(height: 2),
+                    if(index != 1)// Space between icon and dot
                     MyText(
                       text: items[index]['label'],
                       size: 12,
                       weight: FontWeight.w500,
-                      color: kYellowColor,
+                      color: kBlackColor,
                     )
                   ],
                 ),
                 icon: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    index != 0 ?
+                    index == 1 ?
                     Image.asset(
+                      items[index]['image'],
+                      width: 55,
+                    ) : Image.asset(
                       items[index]['image'],
                       color: kTertiaryColor,
                       width: 27,
-                    ) : Image.asset(
-                      items[index]['image'],
-                      //color: kTertiaryColor,
-                      width: 27,
                     ) ,
-                    const SizedBox(height: 2), // Space between icon and dot
+                    if(index != 1)
+                    const SizedBox(height: 2),
+                    if(index != 1)// Space between icon and dot
                     MyText(
                       text: items[index]['label'],
                       size: 12,
