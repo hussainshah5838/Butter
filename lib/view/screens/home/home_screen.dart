@@ -19,6 +19,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isSelected = false;
   bool _showItems = false;
+  Map<String, bool> _expandedSections = {
+    "Produce": false,
+    "Pantry": false,
+    "Baby": false,
+    "House Hold": false,
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildExpandableSection(String title,List<Widget> children) {
+    final isExpanded = _expandedSections[title] ?? false;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -135,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  _showItems = !_showItems;
+                  _expandedSections[title] = !isExpanded;
                 });
               },
               child: CommonImageView(
@@ -144,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        if (_showItems) ...children,
+        if (isExpanded) ...children,
       ],
     );
   }

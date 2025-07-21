@@ -1,4 +1,7 @@
+import 'package:butter/view/screens/Account/account_screen.dart';
+import 'package:butter/view/screens/Activity/activity_screen.dart';
 import 'package:butter/view/screens/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:butter/view/screens/categories/categories_screen.dart';
 import 'package:butter/view/screens/launch/select_login_screen.dart';
 import 'package:butter/view/screens/launch/splash_screen.dart';
 import 'package:butter/view/screens/onboarding/add_tap_and_speak_screen.dart';
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: kWhiteBgColor,
         appBarTheme: AppBarTheme(backgroundColor: kWhiteBgColor),
       ),
-      home: BottomNavBar(),
+      home: AccountScreen(),
       defaultTransition: Transition.fadeIn,
     );
   }

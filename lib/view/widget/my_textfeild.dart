@@ -126,11 +126,11 @@ class _MyTextFieldState extends State<MyTextField> {
                 obscureText: widget.isObSecure ?? false,
                 obscuringCharacter: '*',
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                   fontFamily: AppFonts.inter,
                   decoration: TextDecoration.none,
-                  color: kYellowColor,
+                  color: kBlackColor  ,
                 ),
                 decoration: InputDecoration(
                   filled: true,

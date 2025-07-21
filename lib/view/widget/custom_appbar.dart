@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Padding(
             padding: const EdgeInsets.all(18),
             child: CommonImageView(
-              //svgPath: Assets.svgArrowBack,
+              svgPath: Assets.svgArrowBack,
               height: 16,
             ),
           ),

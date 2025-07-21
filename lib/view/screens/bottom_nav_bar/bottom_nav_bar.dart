@@ -8,6 +8,7 @@ import '../../widget/common_image_view_widget.dart';
 import '../../widget/custom_appbar.dart';
 import '../../widget/drawer.dart';
 import '../../widget/my_text_widget.dart';
+import '../add/bottom_sheet.dart';
 import '../home/home_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -100,6 +101,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
               log(currentIndex.toString());
               updateItems(); // Update items when index changes
             });
+            // Show bottom sheet when index == 1
+            if (index == 1) {
+              MyBottomSheet.show(context); // your custom bottom sheet method
+            }
           },
           type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
