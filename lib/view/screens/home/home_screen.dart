@@ -1,13 +1,11 @@
-import 'package:butter/constants/app_fonts.dart';
-import 'package:butter/constants/app_sizes.dart';
+import 'package:butter/config/constants/app_fonts.dart';
+import 'package:butter/config/constants/app_sizes.dart';
 import 'package:butter/view/widget/common_image_view_widget.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants/app_colors.dart';
+import '../../../config/constants/app_colors.dart';
 import '../../../generated/assets.dart';
-
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,30 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: AppSizes.DEFAULT,
           child: Column(
             children: [
-              buildExpandableSection(
-                  "Produce",
-                  [
-                    buildProductTile(
-                      title: "Bananas",
-                      isSelected: isSelected,
-                      onChanged: (value) {
-                        setState(() {
-                          isSelected = value!;
-                        });
-                      },
-                    ),
-                    buildProductTile(
-                      title: "Tomatoes",
-                      isSelected: false,
-                      onChanged: (value) {
-                        // handle logic here
-                      },
-                    ),
-                  ]),
-
-              buildExpandableSection(
-                "Pantry",
-                  [
+              buildExpandableSection("Produce", [
                 buildProductTile(
                   title: "Bananas",
                   isSelected: isSelected,
@@ -75,57 +50,70 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ]),
 
-              buildExpandableSection(
-                  "Baby",
-                  [
-                    buildProductTile(
-                      title: "Bananas",
-                      isSelected: isSelected,
-                      onChanged: (value) {
-                        setState(() {
-                          isSelected = value!;
-                        });
-                      },
-                    ),
-                    buildProductTile(
-                      title: "Tomatoes",
-                      isSelected: false,
-                      onChanged: (value) {
-                        // handle logic here
-                      },
-                    ),
-                  ]),
+              buildExpandableSection("Pantry", [
+                buildProductTile(
+                  title: "Bananas",
+                  isSelected: isSelected,
+                  onChanged: (value) {
+                    setState(() {
+                      isSelected = value!;
+                    });
+                  },
+                ),
+                buildProductTile(
+                  title: "Tomatoes",
+                  isSelected: false,
+                  onChanged: (value) {
+                    // handle logic here
+                  },
+                ),
+              ]),
 
-              buildExpandableSection(
-                  "House Hold",
-                  [
-                    buildProductTile(
-                      title: "Bananas",
-                      isSelected: isSelected,
-                      onChanged: (value) {
-                        setState(() {
-                          isSelected = value!;
-                        });
-                      },
-                    ),
-                    buildProductTile(
-                      title: "Tomatoes",
-                      isSelected: false,
-                      onChanged: (value) {
-                        // handle logic here
-                      },
-                    ),
-                  ]),
+              buildExpandableSection("Baby", [
+                buildProductTile(
+                  title: "Bananas",
+                  isSelected: isSelected,
+                  onChanged: (value) {
+                    setState(() {
+                      isSelected = value!;
+                    });
+                  },
+                ),
+                buildProductTile(
+                  title: "Tomatoes",
+                  isSelected: false,
+                  onChanged: (value) {
+                    // handle logic here
+                  },
+                ),
+              ]),
 
+              buildExpandableSection("House Hold", [
+                buildProductTile(
+                  title: "Bananas",
+                  isSelected: isSelected,
+                  onChanged: (value) {
+                    setState(() {
+                      isSelected = value!;
+                    });
+                  },
+                ),
+                buildProductTile(
+                  title: "Tomatoes",
+                  isSelected: false,
+                  onChanged: (value) {
+                    // handle logic here
+                  },
+                ),
+              ]),
             ],
           ),
         ),
       ),
-
     );
   }
 
-  Widget buildExpandableSection(String title,List<Widget> children) {
+  Widget buildExpandableSection(String title, List<Widget> children) {
     final isExpanded = _expandedSections[title] ?? false;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,9 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   _expandedSections[title] = !isExpanded;
                 });
               },
-              child: CommonImageView(
-                svgPath: Assets.svgArrowDown,
-              ),
+              child: CommonImageView(svgPath: Assets.svgArrowDown),
             ),
           ],
         ),
@@ -155,8 +141,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-
-
 
   Widget buildProductTile({
     required String title,
@@ -174,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
           unselectedWidgetColor: kYellowColor, // Inactive color
         ),
         child: Radio<bool>(
-          visualDensity:VisualDensity.compact,
+          visualDensity: VisualDensity.compact,
           value: true,
           groupValue: isSelected,
           activeColor: kYellowColor, // Active color
@@ -187,23 +171,24 @@ class _HomeScreenState extends State<HomeScreen> {
         color: kBlackColor,
         weight: FontWeight.w600,
       ),
-      subtitle: subtitle != null
-          ? MyText(
-        text: subtitle,
-        size: 10,
-        weight: FontWeight.w300,
-        color: Colors.black.withOpacity(0.5),
-      )
-          : null,
-      trailing: trailingText != null
-          ? MyText(
-        text: trailingText,
-        size: 10,
-        color: kBlackColor,
-        weight: FontWeight.w600,
-      )
-          : null,
+      subtitle:
+          subtitle != null
+              ? MyText(
+                text: subtitle,
+                size: 10,
+                weight: FontWeight.w300,
+                color: Colors.black.withOpacity(0.5),
+              )
+              : null,
+      trailing:
+          trailingText != null
+              ? MyText(
+                text: trailingText,
+                size: 10,
+                color: kBlackColor,
+                weight: FontWeight.w600,
+              )
+              : null,
     );
   }
-
 }

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
-import '../../constants/app_colors.dart';
-import '../../constants/app_fonts.dart';
+import '../../config/constants/app_colors.dart';
+import '../../config/constants/app_fonts.dart';
 import '../../generated/assets.dart';
 import 'common_image_view_widget.dart';
 import 'my_text_widget.dart';
@@ -12,18 +12,18 @@ import 'my_text_widget_gradeint.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final bool showBackButton,centerText;
+  final bool showBackButton, centerText;
   final List<Widget>? actions;
   final VoidCallback? onBackTap;
 
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.actions,
     this.onBackTap,
     this.showBackButton = true,
-    this.centerText = true
-  }) : super(key: key);
+    this.centerText = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +31,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       effects: [FadeEffect(duration: Duration(milliseconds: 500))],
       child: AppBar(
         centerTitle: centerText,
-       // backgroundColor: kSecondaryColor,
-        leading: showBackButton == true ? InkWell(
-          onTap: onBackTap ?? () => Get.back(),
-          child: Padding(
-            padding: const EdgeInsets.all(18),
-            child: CommonImageView(
-              svgPath: Assets.svgArrowBack,
-              height: 16,
-            ),
-          ),
-        ): null,
+        // backgroundColor: kSecondaryColor,
+        leading:
+            showBackButton == true
+                ? InkWell(
+                  onTap: onBackTap ?? () => Get.back(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: CommonImageView(
+                      svgPath: Assets.svgArrowBack,
+                      height: 16,
+                    ),
+                  ),
+                )
+                : null,
         title: MyText(
           text: title,
           size: 20,
@@ -56,7 +59,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-
 
 ///Custom App Bar 2
 class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
@@ -81,9 +83,13 @@ class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
           centerTitle: true,
           backgroundColor: kPrimaryColor,
           automaticallyImplyLeading: false,
-          leading: showIcon ? InkWell(
-            onTap: onDrawerPressed,
-              child: Icon(Icons.menu,color: kSecondaryColor,)): null,
+          leading:
+              showIcon
+                  ? InkWell(
+                    onTap: onDrawerPressed,
+                    child: Icon(Icons.menu, color: kSecondaryColor),
+                  )
+                  : null,
           title: CommonImageView(
             //imagePath: Assets.imagesLogo,
             height: 49,
@@ -98,7 +104,6 @@ class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-
 class CustomAppBar3 extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
   final List<Widget>? actions;
@@ -109,7 +114,6 @@ class CustomAppBar3 extends StatelessWidget implements PreferredSizeWidget {
     required this.onDrawerPressed,
     this.title,
     this.actions,
-
   }) : super(key: key);
 
   @override
@@ -123,8 +127,9 @@ class CustomAppBar3 extends StatelessWidget implements PreferredSizeWidget {
           backgroundColor: kPrimaryColor,
           leading: GestureDetector(
             onTap: onDrawerPressed,
-              child: Icon(Icons.menu,color: kSecondaryColor,)),
-          title:title,
+            child: Icon(Icons.menu, color: kSecondaryColor),
+          ),
+          title: title,
           /*MyText(
             text: title!,
             size: 20,
@@ -141,8 +146,6 @@ class CustomAppBar3 extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-
-
 class CustomAppBar4 extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
   final List<Widget>? actions;
@@ -153,7 +156,6 @@ class CustomAppBar4 extends StatelessWidget implements PreferredSizeWidget {
     required this.onDrawerPressed,
     this.title,
     this.actions,
-
   }) : super(key: key);
 
   @override
@@ -166,9 +168,10 @@ class CustomAppBar4 extends StatelessWidget implements PreferredSizeWidget {
           centerTitle: true,
           backgroundColor: kPrimaryColor,
           leading: GestureDetector(
-              onTap: onDrawerPressed,
-              child: Icon(Icons.arrow_back,color: kSecondaryColor,)),
-          title:title,
+            onTap: onDrawerPressed,
+            child: Icon(Icons.arrow_back, color: kSecondaryColor),
+          ),
+          title: title,
           /*MyText(
             text: title!,
             size: 20,
@@ -184,5 +187,3 @@ class CustomAppBar4 extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-
-

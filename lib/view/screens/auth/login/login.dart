@@ -1,9 +1,7 @@
-
-
-import 'package:butter/constants/app_sizes.dart';
+import 'package:butter/config/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:butter/constants/app_fonts.dart';
+import 'package:butter/config/constants/app_fonts.dart';
 import 'package:butter/view/screens/auth/otp/otp.dart';
 import 'package:butter/view/screens/auth/signup/signup.dart';
 import 'package:butter/view/widget/common_image_view_widget.dart';
@@ -11,9 +9,7 @@ import 'package:butter/view/widget/custom_animated_row.dart';
 import 'package:butter/view/widget/my_button.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
 import 'package:butter/view/widget/my_textfeild.dart';
-
-import '../../../../constants/app_colors.dart';
-import '../../../../generated/assets.dart';
+import '../../../../config/constants/app_colors.dart';
 import '../../../widget/custom_appbar.dart';
 import '../../../widget/custom_checkbox_widget.dart';
 import '../../bottom_nav_bar/bottom_nav_bar.dart';
@@ -38,9 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       child: Scaffold(
-        appBar: CustomAppBar(
-          title: "",
-        ),
+        appBar: CustomAppBar(title: ""),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -55,20 +49,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 92,
                     ),
                   ),
-                  SizedBox(height: 36,),
+                  SizedBox(height: 36),
+                  MyText(text: "login".tr, size: 20, weight: FontWeight.w600),
+                  SizedBox(height: 8),
                   MyText(
-                    text: "login".tr,
-                    size: 20,
-                    weight: FontWeight.w600,
+                    text: "log_in_continue".tr,
+                    size: 14,
+                    weight: FontWeight.w500,
+                    color: kTertiaryColor,
                   ),
-                  SizedBox(height: 8,),
-                  MyText(
-                      text: "log_in_continue".tr,
-                      size: 14,
-                      weight: FontWeight.w500,
-                      color: kTertiaryColor,
-                  ),
-                  SizedBox(height: 25,),
+                  SizedBox(height: 25),
                   MyTextField(
                     focusNode: _focusNodeEmail,
                     label: "email_address".tr,
@@ -81,15 +71,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     marginBottom: 6,
                     suffix: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Icon(Icons.remove_red_eye_outlined,color: kTertiaryColor,),
+                      child: Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: kTertiaryColor,
+                      ),
                     ),
                   ),
-                  SizedBox(height: 5,),
+                  SizedBox(height: 5),
                   Align(
                     alignment: Alignment.centerRight,
                     child: MyText(
-                      onTap: (){
-                        Get.to(()=> OtpScreen());
+                      onTap: () {
+                        Get.to(() => OtpScreen());
                       },
                       text: "forgot_password".tr,
                       size: 12,
@@ -97,18 +90,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: kYellowColor,
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  RichTermCheckBox(
-                    onChanged: (bool ) {},
+                  SizedBox(height: 20),
+                  RichTermCheckBox(onChanged: (bool) {}),
+                  SizedBox(height: 50),
+                  MyButton(
+                    onTap: () {
+                      Get.to(() => BottomNavBar());
+                    },
+                    buttonText: "login".tr,
                   ),
-                  SizedBox(height: 50,),
-                  MyButton(onTap: (){
-                    Get.to(()=> BottomNavBar());
-                  }, buttonText: "login".tr),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   GestureDetector(
-                    onTap: (){
-                      Get.to(()=> SignUpScreen());
+                    onTap: () {
+                      Get.to(() => SignUpScreen());
                     },
                     child: Align(
                       alignment: Alignment.center,
@@ -127,10 +121,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextSpan(
                               text: 'sign_up'.tr,
                               style: TextStyle(
-                                  color: kYellowColor,
-                                  fontSize: 12,
-                                  fontFamily: AppFonts.inter,
-                                  fontWeight: FontWeight.w600,
+                                color: kYellowColor,
+                                fontSize: 12,
+                                fontFamily: AppFonts.inter,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
@@ -139,36 +133,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   AnimatedRow(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                     Expanded(
-                       child: Divider(
-                         color: kQuaternaryColor,
-                       ),
-                     ),
+                      Expanded(child: Divider(color: kQuaternaryColor)),
 
-                     Padding(
-                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                       child: MyText(
-                         text: "or_continue_with".tr,
-                         size: 12,
-                         weight: FontWeight.w400,
-                         color: kTertiaryColor,
-                       ),
-                     ),
-                     Expanded(
-                       child: Divider(
-                         color: kQuaternaryColor,
-                       ),
-                     ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: MyText(
+                          text: "or_continue_with".tr,
+                          size: 12,
+                          weight: FontWeight.w400,
+                          color: kTertiaryColor,
+                        ),
+                      ),
+                      Expanded(child: Divider(color: kQuaternaryColor)),
                     ],
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   MyBorderButton(
-                      buttonText: "", 
-                      onTap: (){},
+                    buttonText: "",
+                    onTap: () {},
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -176,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           //imagePath: Assets.imagesGoogle,
                           height: 24,
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(width: 10),
                         MyText(
                           text: "sign_in_google".tr,
                           size: 16,
@@ -185,8 +171,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
-
-
                 ],
               ),
             ),
@@ -195,5 +179,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
 }

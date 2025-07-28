@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:butter/constants/app_sizes.dart';
+import 'package:butter/config/constants/app_sizes.dart';
 import 'package:butter/view/screens/auth/login/login.dart';
 
-import '../../../../constants/app_colors.dart';
-import '../../../../constants/app_fonts.dart';
+import '../../../../config/constants/app_colors.dart';
+import '../../../../config/constants/app_fonts.dart';
 import '../../../../generated/assets.dart';
 import '../../../widget/common_image_view_widget.dart';
 import '../../../widget/custom_animated_row.dart';
@@ -40,9 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
       },
       child: Scaffold(
-        appBar: CustomAppBar(
-          title: "",
-        ),
+        appBar: CustomAppBar(title: ""),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -57,20 +54,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 92,
                     ),
                   ),
-                  SizedBox(height: 36,),
-                  MyText(
-                    text: "sign_up".tr,
-                    size: 20,
-                    weight: FontWeight.w600,
-                  ),
-                  SizedBox(height: 8,),
+                  SizedBox(height: 36),
+                  MyText(text: "sign_up".tr, size: 20, weight: FontWeight.w600),
+                  SizedBox(height: 8),
                   MyText(
                     text: "create_account_continue".tr,
                     size: 14,
                     weight: FontWeight.w500,
                     color: kTertiaryColor,
                   ),
-                  SizedBox(height: 25,),
+                  SizedBox(height: 25),
                   MyTextField(
                     focusNode: _focusNodeEmail,
                     label: "first_name".tr,
@@ -93,35 +86,50 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   MyTextField(
                     hint: "576 889 324",
-                    label:"phone_number".tr,
+                    label: "phone_number".tr,
                     //showFlag:true,
-                    prefix:Padding(
-                    padding: const EdgeInsets.only(left:12.0),
-                    child: Row(
-                      mainAxisSize:MainAxisSize.min,
-                      children: [
-                        MyText(text: "+44",size:14,color:kGreyColor,weight:FontWeight.w500,),
-                        Icon(Icons.keyboard_arrow_down_outlined,color:kTertiaryColor,),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                          child: Container(
-                            width: 1.5,
-                            height: 25,
-                            decoration: BoxDecoration(
-                              color: kDividerColor,
-                              borderRadius: BorderRadius.circular(15)
+                    prefix: Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          MyText(
+                            text: "+44",
+                            size: 14,
+                            color: kGreyColor,
+                            weight: FontWeight.w500,
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_outlined,
+                            color: kTertiaryColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 5.0,
+                            ),
+                            child: Container(
+                              width: 1.5,
+                              height: 25,
+                              decoration: BoxDecoration(
+                                color: kDividerColor,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
                             ),
                           ),
-                        )
-                      ],),
-                  ),),
+                        ],
+                      ),
+                    ),
+                  ),
                   MyTextField(
                     focusNode: _focusNodePassword,
                     label: "create_password".tr,
                     hint: "********",
                     suffix: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Icon(Icons.remove_red_eye_outlined,color: kTertiaryColor,),
+                      child: Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: kTertiaryColor,
+                      ),
                     ),
                   ),
                   MyTextField(
@@ -131,7 +139,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                     suffix: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Icon(Icons.remove_red_eye_outlined,color: kTertiaryColor,),
+                      child: Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: kTertiaryColor,
+                      ),
                     ),
                   ),
                   CustomDropDown(
@@ -149,24 +160,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     width: double.infinity, // optional
                   ),
 
-                  SizedBox(height: 20,),
-                  RichTermCheckBox(
-                    onChanged: (bool ) {},
+                  SizedBox(height: 20),
+                  RichTermCheckBox(onChanged: (bool) {}),
+                  SizedBox(height: 50),
+                  MyButton(
+                    onTap: () {
+                      Get.to(() => BottomNavBar());
+                    },
+                    buttonText: "sign_up".tr,
                   ),
-                  SizedBox(height: 50,),
-                  MyButton(onTap: (){
-                    Get.to(()=> BottomNavBar());
-                  }, buttonText: "sign_up".tr),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   GestureDetector(
-                    onTap: (){
-                      Get.to(()=> SignUpScreen());
+                    onTap: () {
+                      Get.to(() => SignUpScreen());
                     },
                     child: Align(
                       alignment: Alignment.center,
                       child: GestureDetector(
-                        onTap: (){
-                          Get.to(()=> LoginScreen());
+                        onTap: () {
+                          Get.to(() => LoginScreen());
                         },
                         child: Text.rich(
                           TextSpan(
@@ -196,15 +208,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   AnimatedRow(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Divider(
-                          color: kQuaternaryColor,
-                        ),
-                      ),
+                      Expanded(child: Divider(color: kQuaternaryColor)),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -215,17 +223,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           color: kTertiaryColor,
                         ),
                       ),
-                      Expanded(
-                        child: Divider(
-                          color: kQuaternaryColor,
-                        ),
-                      ),
+                      Expanded(child: Divider(color: kQuaternaryColor)),
                     ],
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   MyBorderButton(
                     buttonText: "",
-                    onTap: (){},
+                    onTap: () {},
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -233,7 +237,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           //imagePath: Assets.imagesGoogle,
                           height: 24,
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(width: 10),
                         MyText(
                           text: "sign_in_google".tr,
                           size: 16,
@@ -242,8 +246,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ],
                     ),
                   ),
-
-
                 ],
               ),
             ),
@@ -252,5 +254,4 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
-
 }

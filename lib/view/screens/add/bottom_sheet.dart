@@ -1,14 +1,14 @@
 import 'dart:async';
 
-import 'package:butter/constants/app_fonts.dart';
-import 'package:butter/constants/app_sizes.dart';
+import 'package:butter/config/constants/app_fonts.dart';
+import 'package:butter/config/constants/app_sizes.dart';
 import 'package:butter/view/widget/common_image_view_widget.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
 import 'package:butter/view/widget/my_textfeild.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../constants/app_colors.dart';
+import '../../../config/constants/app_colors.dart';
 import '../../../generated/assets.dart';
 import '../../widget/my_button.dart';
 import '../dialogs/dialogs.dart';
@@ -86,10 +86,11 @@ class MyBottomSheet {
                 suffix: Padding(
                   padding: const EdgeInsets.all(10),
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       MyBottomSheet.addTextSheet(context);
                     },
-                      child: Icon(Icons.arrow_forward)),
+                    child: Icon(Icons.arrow_forward),
+                  ),
                 ),
               ),
             ],
@@ -231,14 +232,17 @@ class MyBottomSheet {
                   ),
                   Divider(),
                   SizedBox(height: 50),
-                  MyButton(onTap: () {
-                    Get.back();
-                  }, buttonText: "Looks good"),
+                  MyButton(
+                    onTap: () {
+                      Get.back();
+                    },
+                    buttonText: "Looks good",
+                  ),
                   SizedBox(height: 10),
                   Align(
                     alignment: Alignment.center,
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Get.back();
                         MyBottomSheet.show(context);
                       },
@@ -305,9 +309,7 @@ class MyBottomSheet {
     );
   }
 
-
   static void addTextSheet(BuildContext context) {
-
     final List<String> items = ["Milk", "Eggs", "Cheese", "Butter"];
     int selectedIndex = -1;
 
@@ -328,20 +330,16 @@ class MyBottomSheet {
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start  ,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(Icons.close),
-                      MyText(
-                        text: "Done",
-                        size: 14,
-                        weight: FontWeight.w600,
-                      ),
+                      MyText(text: "Done", size: 14, weight: FontWeight.w600),
                     ],
                   ),
-                  SizedBox(height: 25,),
+                  SizedBox(height: 25),
                   Row(
                     children: [
                       Expanded(
@@ -353,14 +351,14 @@ class MyBottomSheet {
                           hintColor: Colors.black.withValues(alpha: 0.25),
                         ),
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(width: 10),
                       CommonImageView(
                         imagePath: Assets.imagesAddYellowButton,
                         height: 40,
                       ),
                     ],
                   ),
-                  SizedBox(height: 25,),
+                  SizedBox(height: 25),
                   Align(
                     alignment: Alignment.topLeft,
                     child: MyText(
@@ -370,9 +368,8 @@ class MyBottomSheet {
                       color: Colors.black.withValues(alpha: 0.50),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   SelectableChips(),
-
                 ],
               ),
             ),
@@ -382,9 +379,7 @@ class MyBottomSheet {
     );
   }
 
-
   static void completedItemsSheet(BuildContext context) {
-
     Get.bottomSheet(
       ignoreSafeArea: true,
       isScrollControlled: true,
@@ -408,14 +403,14 @@ class MyBottomSheet {
                     blurRadius: 10,
                     offset: Offset(0, -5),
                     spreadRadius: 0,
-                  )
+                  ),
                 ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.close),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 30),
                   MyText(
                     text: "2 items",
                     size: 32,
@@ -423,12 +418,8 @@ class MyBottomSheet {
                     fontFamily: AppFonts.lexend,
                     letterSpacing: -1.60,
                   ),
-                  SizedBox(height: 20,),
-                  MyText(
-                    text: "Produce",
-                    size: 14,
-                    weight: FontWeight.w300,
-                  ),
+                  SizedBox(height: 20),
+                  MyText(text: "Produce", size: 14, weight: FontWeight.w300),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: Container(
@@ -443,7 +434,7 @@ class MyBottomSheet {
                           ),
                         ),
                       ),
-                      child: Icon(Icons.check,size: 15,color: kWhiteBgColor,),
+                      child: Icon(Icons.check, size: 15, color: kWhiteBgColor),
                     ),
                     title: MyText(
                       text: "Carrots",
@@ -455,15 +446,10 @@ class MyBottomSheet {
                       size: 10,
                       weight: FontWeight.w600,
                     ),
-
                   ),
                   Divider(),
-                  SizedBox(height: 20,),
-                  MyText(
-                    text: "Pantry",
-                    size: 14,
-                    weight: FontWeight.w300,
-                  ),
+                  SizedBox(height: 20),
+                  MyText(text: "Pantry", size: 14, weight: FontWeight.w300),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: Container(
@@ -478,7 +464,7 @@ class MyBottomSheet {
                           ),
                         ),
                       ),
-                      child: Icon(Icons.check,size: 15,color: kWhiteBgColor,),
+                      child: Icon(Icons.check, size: 15, color: kWhiteBgColor),
                     ),
                     title: MyText(
                       text: "Olive Oil",
@@ -490,20 +476,16 @@ class MyBottomSheet {
                       size: 10,
                       weight: FontWeight.w600,
                     ),
-
                   ),
                   Divider(),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 30),
                   MyBorderButton(
-                    onTap: (){
+                    onTap: () {
                       DialogHelper.undoShoppingDialog(context);
                     },
                     buttonText: "Undo shopping",
                     textColor: kRedColor,
-
-                  )
-
-
+                  ),
                 ],
               ),
             ),
@@ -513,9 +495,7 @@ class MyBottomSheet {
     );
   }
 
-
   static void deleteCategorySheet(BuildContext context) {
-
     Get.bottomSheet(
       ignoreSafeArea: true,
       isScrollControlled: true,
@@ -535,7 +515,7 @@ class MyBottomSheet {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.close),
-                  SizedBox(height: 30,),
+                  SizedBox(height: 30),
                   TextField(
                     style: TextStyle(
                       fontSize: 32,
@@ -552,21 +532,17 @@ class MyBottomSheet {
                         fontWeight: FontWeight.w500,
                         fontFamily: AppFonts.lexend,
                         color: Colors.black.withValues(alpha: 0.20),
-
                       ),
                     ),
                   ),
-                  SizedBox(height: 130,),
+                  SizedBox(height: 130),
                   MyBorderButton(
-                    onTap: (){
+                    onTap: () {
                       DialogHelper.deleteCategoryDialog(context);
                     },
                     buttonText: "Delete shopping",
                     textColor: kRedColor,
-
-                  )
-
-
+                  ),
                 ],
               ),
             ),
@@ -575,11 +551,7 @@ class MyBottomSheet {
       ),
     );
   }
-
-
 }
-
-
 
 class SelectableChips extends StatefulWidget {
   const SelectableChips({super.key});
@@ -615,9 +587,10 @@ class _SelectableChipsState extends State<SelectableChips> {
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   width: 0.5,
-                  color: isSelected
-                      ? Colors.transparent
-                      : Colors.black.withOpacity(0.25),
+                  color:
+                      isSelected
+                          ? Colors.transparent
+                          : Colors.black.withOpacity(0.25),
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),

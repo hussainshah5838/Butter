@@ -1,13 +1,14 @@
-import 'package:butter/constants/app_fonts.dart';
-import 'package:butter/constants/app_sizes.dart';
+import 'package:butter/config/constants/app_fonts.dart';
+import 'package:butter/config/constants/app_sizes.dart';
+import 'package:butter/config/routes/routes.dart';
 import 'package:butter/view/widget/my_button.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
-import 'package:butter/view/widget/my_textfeild.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-import '../../../constants/app_colors.dart';
-
-
+import '../../../config/constants/app_colors.dart';
+import '../../../config/routes/routes_name.dart';
 
 class OnboardingNameScreen extends StatelessWidget {
   const OnboardingNameScreen({super.key});
@@ -25,50 +26,52 @@ class OnboardingNameScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: AppSizes.DEFAULT,
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Spacer(),
                 MyText(
                   text: "What should we call you?",
-                  size: 32,
+                  size: 32.sp,
                   weight: FontWeight.w500,
                   fontFamily: AppFonts.lexend,
                   letterSpacing: -1.60,
                 ),
-                SizedBox(height: 15,),
+                20.verticalSpace,
                 MyText(
                   text: "So we know who to blame when the fridge is empty.",
                   color: Colors.black.withValues(alpha: 0.50),
-                  size: 16,
+                  size: 16.sp,
                   weight: FontWeight.w300,
                 ),
-                SizedBox(height: 35,),
+                35.verticalSpace,
                 TextField(
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 32.sp,
                     fontWeight: FontWeight.w500,
                     fontFamily: AppFonts.lexend,
                   ),
                   cursorColor: kYellowColor,
-                  cursorHeight: 35,
+                  cursorHeight: 35.h,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "Name",
                     hintStyle: TextStyle(
-                      fontSize: 32,
+                      fontSize: 32.sp,
                       fontWeight: FontWeight.w500,
                       fontFamily: AppFonts.lexend,
                       color: Colors.black.withValues(alpha: 0.20),
-
                     ),
                   ),
                 ),
                 Spacer(),
                 Spacer(),
-                MyBorderButton(buttonText: "Looks good", onTap: (){})
-
+                MyBorderButton(
+                  buttonText: "Looks good",
+                  onTap: () => Get.toNamed(RouteName.onboardingHouseholdScreen),
+                  height: 50.h,
+                ),
               ],
             ),
           ),

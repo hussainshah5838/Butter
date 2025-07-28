@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../constants/app_colors.dart';
-import '../../../constants/app_fonts.dart';
+import '../../../config/constants/app_colors.dart';
+import '../../../config/constants/app_fonts.dart';
 import '../../../generated/assets.dart';
 import '../../widget/common_image_view_widget.dart';
 import '../../widget/custom_appbar.dart';
@@ -29,33 +29,21 @@ class _BottomNavBarState extends State<BottomNavBar> {
     updateItems();
   }
 
-
   void updateItems() {
     items = [
-      {
-        'image': Assets.imagesList,
-        'label': 'List'.tr,
-      },
+      {'image': Assets.imagesList, 'label': 'List'.tr},
 
-      {
-        'image': Assets.imagesAdd,
-        'label': ''.tr,
-      },
-      {
-        'image':  Assets.imagesChat ,
-        'label': 'Marge'.tr,
-      },
-
+      {'image': Assets.imagesAdd, 'label': ''.tr},
+      {'image': Assets.imagesChat, 'label': 'Marge'.tr},
     ];
   }
 
   final List<Widget> screens = [
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
 
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
     //AlertScreen(),
-
   ];
 
   String? _scanResult = "No result yet";
@@ -81,18 +69,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
         padding: const EdgeInsets.all(0),
         //height:  62,
         decoration: const BoxDecoration(
-         color: Colors.white,
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: Color(0x1E000000),
               blurRadius: 20,
               offset: Offset(0, 0),
               spreadRadius: 0,
-            )
+            ),
           ],
         ),
         child: BottomNavigationBar(
-
           elevation: 0,
           backgroundColor: Colors.transparent,
           onTap: (index) {
@@ -120,63 +107,52 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           selectedItemColor: kYellowColor,
           unselectedItemColor: kYellowColor,
-          items: List.generate(
-            items.length,
-                (index) {
-              return BottomNavigationBarItem(
-
-                tooltip: 'ss',
-                activeIcon: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    index ==  1 ?
-                    Image.asset(
-                      items[index]['image'],
-                      width: 55,
-                    ) :
-                    Image.asset(
-                      items[index]['image'],
+          items: List.generate(items.length, (index) {
+            return BottomNavigationBarItem(
+              tooltip: 'ss',
+              activeIcon: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  index == 1
+                      ? Image.asset(items[index]['image'], width: 55)
+                      : Image.asset(
+                        items[index]['image'],
+                        color: kBlackColor,
+                        width: 27,
+                      ),
+                  if (index != 1) const SizedBox(height: 2),
+                  if (index != 1) // Space between icon and dot
+                    MyText(
+                      text: items[index]['label'],
+                      size: 12,
+                      weight: FontWeight.w500,
                       color: kBlackColor,
-                      width: 27,
                     ),
-                    if(index != 1)
-                    const SizedBox(height: 2),
-                    if(index != 1)// Space between icon and dot
-                    MyText(
-                      text: items[index]['label'],
-                      size: 12,
-                      weight: FontWeight.w500,
-                      color: kBlackColor,
-                    )
-                  ],
-                ),
-                icon: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    index == 1 ?
-                    Image.asset(
-                      items[index]['image'],
-                      width: 55,
-                    ) : Image.asset(
-                      items[index]['image'],
-                      color: kTertiaryColor,
-                      width: 27,
-                    ) ,
-                    if(index != 1)
-                    const SizedBox(height: 2),
-                    if(index != 1)// Space between icon and dot
+                ],
+              ),
+              icon: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  index == 1
+                      ? Image.asset(items[index]['image'], width: 55)
+                      : Image.asset(
+                        items[index]['image'],
+                        color: kTertiaryColor,
+                        width: 27,
+                      ),
+                  if (index != 1) const SizedBox(height: 2),
+                  if (index != 1) // Space between icon and dot
                     MyText(
                       text: items[index]['label'],
                       size: 12,
                       weight: FontWeight.w500,
                       color: kTertiaryColor,
-                    )
-                  ],
-                ),
-                label: '',
-              );
-            },
-          ),
+                    ),
+                ],
+              ),
+              label: '',
+            );
+          }),
         ),
       ),
       //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -216,10 +192,3 @@ class _BottomNavBarState extends State<BottomNavBar> {
     );
   }
 }
-
-
-
-
-
-
-

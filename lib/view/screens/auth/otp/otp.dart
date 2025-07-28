@@ -6,9 +6,9 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:pinput/pinput.dart';
 import 'package:butter/view/screens/auth/login/login.dart';
 
-import '../../../../constants/app_colors.dart';
-import '../../../../constants/app_fonts.dart';
-import '../../../../constants/app_sizes.dart';
+import '../../../../config/constants/app_colors.dart';
+import '../../../../config/constants/app_fonts.dart';
+import '../../../../config/constants/app_sizes.dart';
 import '../../../../generated/assets.dart';
 import '../../../widget/common_image_view_widget.dart';
 import '../../../widget/custom_animated_row.dart';
@@ -25,22 +25,22 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "",
-      ),
+      appBar: CustomAppBar(title: ""),
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: AppSizes.DEFAULT,
-          child: MyButton(onTap: (){
-            Get.to(()=>CreateNewPasswordScreen());
-          }, buttonText: "continue".tr),
+          child: MyButton(
+            onTap: () {
+              Get.to(() => CreateNewPasswordScreen());
+            },
+            buttonText: "continue".tr,
+          ),
         ),
       ),
-      body:SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
           padding: AppSizes.DEFAULT,
           child: Column(
@@ -52,20 +52,20 @@ class _OtpScreenState extends State<OtpScreen> {
                   height: 92,
                 ),
               ),
-              SizedBox(height: 36,),
+              SizedBox(height: 36),
               MyText(
                 text: "verify_phone_number".tr,
                 size: 20,
                 weight: FontWeight.w600,
               ),
-              SizedBox(height: 8,),
+              SizedBox(height: 8),
               MyText(
                 text: "enter_code".tr,
                 size: 14,
                 weight: FontWeight.w500,
                 color: kTertiaryColor,
               ),
-              SizedBox(height: 26,),
+              SizedBox(height: 26),
               Text.rich(
                 TextSpan(
                   children: [
@@ -91,7 +91,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 textAlign: TextAlign.right,
               ),
-              SizedBox(height: 16,),
+              SizedBox(height: 16),
               AnimatedRow(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -101,15 +101,15 @@ class _OtpScreenState extends State<OtpScreen> {
                       width: 48,
                       height: 56,
                       textStyle: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: AppFonts.inter,
-                          color: kSecondaryColor
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: AppFonts.inter,
+                        color: kSecondaryColor,
                       ),
                       decoration: BoxDecoration(
                         color: kPrimaryColor, // Center color
                         borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: kYellowColor, width: 1),
+                        border: Border.all(color: kYellowColor, width: 1),
                       ),
                       //margin: EdgeInsets.only(left: 8),
                     ),
@@ -123,9 +123,10 @@ class _OtpScreenState extends State<OtpScreen> {
                         color: kSecondaryColor,
                       ),
                       decoration: BoxDecoration(
-                          color: kPrimaryColor,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: kYellowColor, width: 1)),
+                        color: kPrimaryColor,
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: kYellowColor, width: 1),
+                      ),
                       // margin: EdgeInsets.only(left: 8),
                     ),
                     submittedPinTheme: PinTheme(
@@ -139,13 +140,12 @@ class _OtpScreenState extends State<OtpScreen> {
                       decoration: BoxDecoration(
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: kYellowColor, width: 1),
-
+                        border: Border.all(color: kYellowColor, width: 1),
                       ),
                       // margin: EdgeInsets.only(left: 8),
                     ),
-                    onLongPress: (){
-                      Get.to(()=>IncorrectOtpScreen());
+                    onLongPress: () {
+                      Get.to(() => IncorrectOtpScreen());
                     },
                     onCompleted: (pin) {
                       //Get.to(()=>CreateNewPasswordScreen());
@@ -153,32 +153,32 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 16,),
+              SizedBox(height: 16),
               Text.rich(
-            TextSpan(
-                children: [
-            TextSpan(
-            text: "didn't_receive_the_code".tr,
-            style: TextStyle(
-            color: kTXGColor,
-            fontSize: 12,
-            fontFamily: AppFonts.inter,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        TextSpan(
-          text: 'resend'.tr,
-          style: TextStyle(
-            color: kYellowColor,
-            fontSize: 12,
-            fontFamily: AppFonts.inter,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        ],
-      ),
-      textAlign: TextAlign.right,
-    )
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "didn't_receive_the_code".tr,
+                      style: TextStyle(
+                        color: kTXGColor,
+                        fontSize: 12,
+                        fontFamily: AppFonts.inter,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'resend'.tr,
+                      style: TextStyle(
+                        color: kYellowColor,
+                        fontSize: 12,
+                        fontFamily: AppFonts.inter,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.right,
+              ),
             ],
           ),
         ),

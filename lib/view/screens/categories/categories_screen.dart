@@ -1,13 +1,11 @@
 import 'package:butter/view/screens/add/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants/app_colors.dart';
-import '../../../constants/app_fonts.dart';
-import '../../../constants/app_sizes.dart';
+import '../../../config/constants/app_colors.dart';
+import '../../../config/constants/app_fonts.dart';
+import '../../../config/constants/app_sizes.dart';
 import '../../widget/custom_appbar.dart';
 import '../../widget/my_text_widget.dart';
-
-
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -18,12 +16,8 @@ class CategoriesScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "",
         actions: [
-          MyText(
-            text: "+ Add",
-            size: 14,
-            weight: FontWeight.w600,
-          ),
-          SizedBox(width: 15,)
+          MyText(text: "+ Add", size: 14, weight: FontWeight.w600),
+          SizedBox(width: 15),
         ],
       ),
       body: SafeArea(
@@ -40,14 +34,15 @@ class CategoriesScreen extends StatelessWidget {
                   weight: FontWeight.w500,
                   fontFamily: AppFonts.lexend,
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 10),
                 MyText(
-                  text: "Long-press to reorder (your order is personal).\nTap to edit (changes are shared).",
+                  text:
+                      "Long-press to reorder (your order is personal).\nTap to edit (changes are shared).",
                   size: 12,
                   weight: FontWeight.w300,
                   color: Colors.black.withValues(alpha: 0.50),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(height: 15),
                 ListView.builder(
                   itemCount: 4,
                   shrinkWrap: true,
@@ -59,7 +54,7 @@ class CategoriesScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           GestureDetector(
-                            onTap:(){
+                            onTap: () {
                               MyBottomSheet.deleteCategorySheet(context);
                             },
                             child: MyText(
@@ -75,10 +70,8 @@ class CategoriesScreen extends StatelessWidget {
                         ],
                       ),
                     );
-                  },),
-
-
-
+                  },
+                ),
               ],
             ),
           ),

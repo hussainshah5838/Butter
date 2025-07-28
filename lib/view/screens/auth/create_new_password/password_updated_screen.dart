@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../../../../constants/app_colors.dart';
-import '../../../../constants/app_sizes.dart';
+import '../../../../config/constants/app_colors.dart';
+import '../../../../config/constants/app_sizes.dart';
 import '../../../../generated/assets.dart';
 import '../../../widget/common_image_view_widget.dart';
 import '../../../widget/custom_appbar.dart';
@@ -22,9 +22,7 @@ class _PasswordUpdatedScreenState extends State<PasswordUpdatedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "",
-      ),
+      appBar: CustomAppBar(title: ""),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -39,26 +37,26 @@ class _PasswordUpdatedScreenState extends State<PasswordUpdatedScreen> {
                     height: 92,
                   ),
                 ),
-                SizedBox(height: 36,),
+                SizedBox(height: 36),
                 MyText(
                   text: "password_updated".tr,
                   size: 20,
                   weight: FontWeight.w600,
                 ),
-                SizedBox(height: 8,),
+                SizedBox(height: 8),
                 MyText(
                   text: "password_changed".tr,
                   size: 14,
                   weight: FontWeight.w500,
                   color: kTertiaryColor,
                 ),
-                SizedBox(height: 50,),
-                MyButton(onTap: (){
-                  Get.to(()=>LoginScreen());
-                }, buttonText: "back_to_login".tr),
-
-
-
+                SizedBox(height: 50),
+                MyButton(
+                  onTap: () {
+                    Get.to(() => LoginScreen());
+                  },
+                  buttonText: "back_to_login".tr,
+                ),
               ],
             ),
           ),

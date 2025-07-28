@@ -1,18 +1,16 @@
-import 'package:butter/constants/app_fonts.dart';
+import 'package:butter/config/constants/app_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../constants/app_colors.dart';
-import '../../../constants/app_sizes.dart';
+import '../../../config/constants/app_colors.dart';
+import '../../../config/constants/app_sizes.dart';
 import '../../../generated/assets.dart';
 import '../../../localization/controller.dart';
 import '../../../localization/user_pref.dart';
 import '../../widget/common_image_view_widget.dart';
 import '../../widget/custom_appbar.dart';
 import '../../widget/my_text_widget.dart';
-
-
 
 class SelectLanguageScreen extends StatefulWidget {
   const SelectLanguageScreen({super.key});
@@ -22,10 +20,7 @@ class SelectLanguageScreen extends StatefulWidget {
 }
 
 class _SelectLanguageScreenState extends State<SelectLanguageScreen> {
-  final List<String> languagesList = [
-    'English',
-    'Spanish',
-  ];
+  final List<String> languagesList = ['English', 'Spanish'];
 
   int selectedIndex = 0;
   final LanguageController languageController = Get.put(LanguageController());
@@ -58,17 +53,17 @@ class _SelectLanguageScreenState extends State<SelectLanguageScreen> {
 
     //Get.to(()=>CtaProductScreen());
     // You could show a snackbar or reload UI as needed
-    Get.snackbar("Success", "Language changed to $selectedLang",
-        snackPosition: SnackPosition.TOP);
+    Get.snackbar(
+      "Success",
+      "Language changed to $selectedLang",
+      snackPosition: SnackPosition.TOP,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        centerText: false,
-        title: "change_language".tr,
-      ),
+      appBar: CustomAppBar(centerText: false, title: "change_language".tr),
       body: Padding(
         padding: AppSizes.DEFAULT,
         child: Center(
@@ -121,10 +116,7 @@ class _SelectLanguageScreenState extends State<SelectLanguageScreen> {
         ),
         child: Row(
           children: [
-            CommonImageView(
-              imagePath: imagePath,
-              height: 56,
-            ),
+            CommonImageView(imagePath: imagePath, height: 56),
             const SizedBox(width: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,12 +137,10 @@ class _SelectLanguageScreenState extends State<SelectLanguageScreen> {
                   fontFamily: AppFonts.inter,
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-

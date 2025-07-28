@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-import '../../constants/app_colors.dart';
+import '../../config/constants/app_colors.dart';
 
 class CustomSwitch extends StatelessWidget {
   final bool value;
@@ -20,7 +19,6 @@ class CustomSwitch extends StatelessWidget {
           color: kYellowColor,
           border: Border.all(color: kPrimaryColor),
           borderRadius: BorderRadius.circular(9.5),
-
         ),
         child: Stack(
           children: [

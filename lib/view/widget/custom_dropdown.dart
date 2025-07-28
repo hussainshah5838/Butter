@@ -147,14 +147,13 @@
 //   }
 // }
 
-
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
-import '../../constants/app_colors.dart';
-import '../../constants/app_fonts.dart';
+import '../../config/constants/app_colors.dart';
+import '../../config/constants/app_fonts.dart';
 import 'common_image_view_widget.dart';
 import 'custom_animated_row.dart';
 import 'my_text_widget.dart';
@@ -183,15 +182,13 @@ class CustomDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        bottom: marginBottom ?? 16,
-      ),
+      padding: EdgeInsets.only(bottom: marginBottom ?? 16),
       child: Animate(
         effects: [
           MoveEffect(
             duration: Duration(milliseconds: 500),
             begin: const Offset(20, 0),
-          )
+          ),
         ],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -202,11 +199,11 @@ class CustomDropDown extends StatelessWidget {
                   MoveEffect(
                     duration: Duration(milliseconds: 500),
                     begin: const Offset(20, 0),
-                  )
+                  ),
                 ],
                 child: MyText(
                   paddingBottom: 5,
-                  text: labelText!.tr,  
+                  text: labelText!.tr,
                   size: 12,
                   fontFamily: AppFonts.inter,
                   textAlign: TextAlign.start,
@@ -219,26 +216,28 @@ class CustomDropDown extends StatelessWidget {
                 MoveEffect(
                   duration: Duration(milliseconds: 500),
                   begin: const Offset(20, 0),
-                )
+                ),
               ],
               child: DropdownButtonHideUnderline(
                 child: DropdownButton2(
-                  items: items!
-                      .map(
-                        (item) => DropdownMenuItem<String>(
-                          value: item,
-                          child: MyText(
-                              text: item.tr, 
-                              size: 14,
-                              color: kTertiaryColor,
-                              weight: FontWeight.w600,
-                              fontFamily: AppFonts.inter),
-                        ),
-                      )
-                      .toList(),
+                  items:
+                      items!
+                          .map(
+                            (item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: MyText(
+                                text: item.tr,
+                                size: 14,
+                                color: kTertiaryColor,
+                                weight: FontWeight.w600,
+                                fontFamily: AppFonts.inter,
+                              ),
+                            ),
+                          )
+                          .toList(),
                   value: selectedValue == hint ? null : selectedValue,
                   hint: MyText(
-                    text: hint.tr,  
+                    text: hint.tr,
                     size: 12,
                     color: kTertiaryColor,
                     textAlign: TextAlign.start,
@@ -246,49 +245,54 @@ class CustomDropDown extends StatelessWidget {
                   ),
                   onChanged: (value) {
                     if (value != null) {
-                      onChanged!(value);  
+                      onChanged!(value);
                     }
                   },
-                  iconStyleData: const IconStyleData(
-                    icon: SizedBox(),
-                  ),
+                  iconStyleData: const IconStyleData(icon: SizedBox()),
                   isDense: true,
                   isExpanded: true,
                   customButton: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 8,
+                    ),
                     height: 48,
                     decoration: BoxDecoration(
                       color: kTextFieldBGColor,
-                      border: Border.all(
-                        color: kBorderColor,
-                        width: 1,
-                      ),
+                      border: Border.all(color: kBorderColor, width: 1),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: AnimatedRow(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         MyText(
-                            text: selectedValue == hint.tr ? hint.tr : selectedValue.tr,  // ✅ Ensure `.tr`
-                            size: 14,
-                            color: kSecondaryColor,
-                            weight: FontWeight.w400,
-                            fontFamily: AppFonts.inter),
-                        Icon(Icons.keyboard_arrow_down_outlined,size: 25,color: kTertiaryColor,)
+                          text:
+                              selectedValue == hint.tr
+                                  ? hint.tr
+                                  : selectedValue.tr, // ✅ Ensure `.tr`
+                          size: 14,
+                          color: kSecondaryColor,
+                          weight: FontWeight.w400,
+                          fontFamily: AppFonts.inter,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_down_outlined,
+                          size: 25,
+                          color: kTertiaryColor,
+                        ),
                       ],
                     ),
                   ),
-                  menuItemStyleData: const MenuItemStyleData(
-                    height: 35,
-                  ),
+                  menuItemStyleData: const MenuItemStyleData(height: 35),
                   dropdownStyleData: DropdownStyleData(
                     elevation: 6,
                     maxHeight: 300,
                     offset: const Offset(0, -5),
                     decoration: BoxDecoration(
-                        border: Border.all(color: kPrimaryColor),
-                        borderRadius: BorderRadius.circular(10),
-                        color: kPrimaryColor),
+                      border: Border.all(color: kPrimaryColor),
+                      borderRadius: BorderRadius.circular(10),
+                      color: kPrimaryColor,
+                    ),
                   ),
                 ),
               ),

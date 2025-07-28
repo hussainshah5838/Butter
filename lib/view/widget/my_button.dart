@@ -1,10 +1,9 @@
-
 import 'package:bounce/bounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../constants/app_colors.dart';
-import '../../constants/app_fonts.dart';
+import '../../config/constants/app_colors.dart';
+import '../../config/constants/app_fonts.dart';
 import 'common_image_view_widget.dart';
 import 'custom_animated_row.dart';
 import 'my_text_widget.dart';
@@ -73,10 +72,10 @@ class MyButton extends StatelessWidget {
           height: height,
           width: width,
           decoration: BoxDecoration(
-                    color: backgroundColor ?? kYellowColor,
-                    border: Border.all(color: outlineColor),
-                    borderRadius: BorderRadius.circular(radius),
-                  ),
+            color: backgroundColor ?? kYellowColor,
+            border: Border.all(color: outlineColor),
+            borderRadius: BorderRadius.circular(radius),
+          ),
 
           child: Material(
             color: Colors.transparent,
@@ -88,8 +87,8 @@ class MyButton extends StatelessWidget {
                       padding:
                           isleft
                               ? const EdgeInsets.only(left: 20.0)
-                              : const EdgeInsets.only(left: 5,),
-                      child: CommonImageView(svgPath: choiceIcon, ),
+                              : const EdgeInsets.only(left: 5),
+                      child: CommonImageView(svgPath: choiceIcon),
                     )
                     : const SizedBox.shrink(),
                 MyText(
@@ -99,7 +98,7 @@ class MyButton extends StatelessWidget {
                   fontFamily: AppFonts.inter,
                   size: fontSize,
                   letterSpacing: 0.5,
-                  color: fontColor ?? kBlackColor ,
+                  color: fontColor ?? kBlackColor,
                   weight: weight ?? FontWeight.w600,
                   textOverflow: TextOverflow.ellipsis,
                   maxLines: 1,
@@ -127,7 +126,7 @@ class MyBorderButton extends StatelessWidget {
     this.borderColor,
     this.mBottom,
     this.mTop,
-    this.textColor
+    this.textColor,
   });
 
   final String buttonText;
@@ -136,7 +135,7 @@ class MyBorderButton extends StatelessWidget {
   FontWeight? weight;
   Widget? child;
   double? radius;
-  Color? borderColor,textColor;
+  Color? borderColor, textColor;
   double? mTop, mBottom;
 
   @override
@@ -147,7 +146,10 @@ class MyBorderButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 25),
         color: Colors.transparent,
-        border: Border.all(width: 1.0, color: borderColor ??  Colors.black.withValues(alpha: 0.25),),
+        border: Border.all(
+          width: 1.0,
+          color: borderColor ?? Colors.black.withValues(alpha: 0.25),
+        ),
       ),
       child: Material(
         color: Colors.transparent,
@@ -165,7 +167,6 @@ class MyBorderButton extends StatelessWidget {
                     size: textSize ?? 16,
                     weight: weight ?? FontWeight.w600,
                     color: textColor ?? Colors.black.withValues(alpha: 0.25),
-
                   ),
                 ),
           ),
@@ -174,8 +175,6 @@ class MyBorderButton extends StatelessWidget {
     );
   }
 }
-
-
 
 class CustomButton extends StatelessWidget {
   CustomButton({
@@ -216,16 +215,17 @@ class CustomButton extends StatelessWidget {
           splashColor: kPrimaryColor.withOpacity(0.1),
           highlightColor: kPrimaryColor.withOpacity(0.1),
           borderRadius: BorderRadius.circular(radius ?? 8),
-          child: customChild != null
-              ? customChild
-              : Center(
-            child: MyText(
-              text: buttonText,
-              size: textSize ?? 18,
-              weight: weight ?? FontWeight.w600,
-              color: textColor ?? kBlackColor,
-            ),
-          ),
+          child:
+              customChild != null
+                  ? customChild
+                  : Center(
+                    child: MyText(
+                      text: buttonText,
+                      size: textSize ?? 18,
+                      weight: weight ?? FontWeight.w600,
+                      color: textColor ?? kBlackColor,
+                    ),
+                  ),
         ),
       ),
     );

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../../../../constants/app_colors.dart';
-import '../../../../constants/app_sizes.dart';
+import '../../../../config/constants/app_colors.dart';
+import '../../../../config/constants/app_sizes.dart';
 import '../../../../generated/assets.dart';
 import '../../../widget/common_image_view_widget.dart';
 import '../../../widget/custom_appbar.dart';
@@ -13,12 +13,12 @@ import '../../../widget/my_text_widget.dart';
 import '../../../widget/my_textfeild.dart';
 import '../otp/incorrect_otp_screen.dart';
 
-
 class CreateNewPasswordScreen extends StatefulWidget {
   const CreateNewPasswordScreen({super.key});
 
   @override
-  State<CreateNewPasswordScreen> createState() => _CreateNewPasswordScreenState();
+  State<CreateNewPasswordScreen> createState() =>
+      _CreateNewPasswordScreenState();
 }
 
 class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
@@ -34,9 +34,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
         }
       },
       child: Scaffold(
-        appBar: CustomAppBar(
-          title: "",
-        ),
+        appBar: CustomAppBar(title: ""),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -51,20 +49,20 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                       height: 92,
                     ),
                   ),
-                  SizedBox(height: 36,),
+                  SizedBox(height: 36),
                   MyText(
                     text: "create_new_password".tr,
                     size: 20,
                     weight: FontWeight.w600,
                   ),
-                  SizedBox(height: 8,),
+                  SizedBox(height: 8),
                   MyText(
                     text: "Choose_strong_password".tr,
                     size: 14,
                     weight: FontWeight.w500,
                     color: kTertiaryColor,
                   ),
-                  SizedBox(height: 25,),
+                  SizedBox(height: 25),
 
                   MyTextField(
                     focusNode: _focusNodePassword,
@@ -72,7 +70,10 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                     hint: "********",
                     suffix: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Icon(Icons.remove_red_eye_outlined,color: kTertiaryColor,),
+                      child: Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: kTertiaryColor,
+                      ),
                     ),
                   ),
                   MyTextField(
@@ -81,16 +82,19 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                     hint: "********",
                     suffix: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Icon(Icons.remove_red_eye_outlined,color: kTertiaryColor,),
+                      child: Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: kTertiaryColor,
+                      ),
                     ),
                   ),
-                  SizedBox(height: 50,),
-                  MyButton(onTap: (){
-                    Get.to(()=>PasswordUpdatedScreen());
-                  }, buttonText: "continue".tr),
-
-
-
+                  SizedBox(height: 50),
+                  MyButton(
+                    onTap: () {
+                      Get.to(() => PasswordUpdatedScreen());
+                    },
+                    buttonText: "continue".tr,
+                  ),
                 ],
               ),
             ),

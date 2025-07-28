@@ -1,11 +1,10 @@
 // ignore_for_file: unnecessary_string_interpolations
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../constants/app_colors.dart';
-import '../../constants/app_fonts.dart';
+import '../../config/constants/app_colors.dart';
+import '../../config/constants/app_fonts.dart';
 
 // ignore: must_be_immutable
 class MyText extends StatelessWidget {
@@ -56,11 +55,7 @@ class MyText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Animate(
-      effects: [
-        FadeEffect(
-          duration: Duration(milliseconds: 500),
-        )
-      ],
+      effects: [FadeEffect(duration: Duration(milliseconds: 500))],
       child: Padding(
         padding: EdgeInsets.only(
           top: paddingTop!,

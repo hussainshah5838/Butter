@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import '../../constants/app_colors.dart';
-import '../../constants/app_fonts.dart';
+import '../../config/constants/app_colors.dart';
+import '../../config/constants/app_fonts.dart';
 import 'my_text_widget.dart';
 import 'my_text_widget_gradeint.dart';
 
@@ -83,13 +82,12 @@ class _MyTextFieldState extends State<MyTextField> {
   Widget build(BuildContext context) {
     return Animate(
       effects: [
-        FadeEffect(
-          duration: Duration(milliseconds: 500),
-        ),
+        FadeEffect(duration: Duration(milliseconds: 500)),
         MoveEffect(
-            curve: Curves.ease,
-            duration: Duration(milliseconds: 500),
-            transformHitTests: F)
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 500),
+          transformHitTests: F,
+        ),
       ],
       child: Padding(
         padding: EdgeInsets.only(bottom: widget.marginBottom ?? 0),
@@ -130,24 +128,18 @@ class _MyTextFieldState extends State<MyTextField> {
                   fontWeight: FontWeight.w600,
                   fontFamily: AppFonts.inter,
                   decoration: TextDecoration.none,
-                  color: kBlackColor  ,
+                  color: kBlackColor,
                 ),
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: widget.filledColor ?? kTextFieldBGColor,
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color:kTXBColor,
-                      width: 1
-                    ),
+                    borderSide: BorderSide(color: kTXBColor, width: 1),
                     borderRadius: BorderRadius.circular(widget.radius ?? 15),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(widget.radius ?? 15),
-                    borderSide: BorderSide(
-                      color: kTXBColor,
-                      width: 1,
-                    ),
+                    borderSide: BorderSide(color: kTXBColor, width: 1),
                   ),
                   prefixIcon: widget.prefix,
                   prefixIconConstraints: BoxConstraints.tightFor(),
@@ -157,7 +149,7 @@ class _MyTextFieldState extends State<MyTextField> {
                     horizontal: 16,
                     vertical: widget.maxLines! > 1 ? 15 : 0,
                   ),
-                 // labelText: widget.label ?? '',
+                  // labelText: widget.label ?? '',
                   labelStyle: TextStyle(
                     color: kGreyTxColor,
                     fontSize: widget.labelSize ?? 12,
@@ -173,17 +165,11 @@ class _MyTextFieldState extends State<MyTextField> {
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(widget.radius ?? 15),
-                    borderSide: BorderSide(
-                      width: 1,
-                      color: Colors.red,
-                    ),
+                    borderSide: BorderSide(width: 1, color: Colors.red),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(widget.radius ?? 15),
-                    borderSide: BorderSide(
-                      width: 1,
-                      color: kBorderColor,
-                    ),
+                    borderSide: BorderSide(width: 1, color: kBorderColor),
                   ),
                 ),
               ),

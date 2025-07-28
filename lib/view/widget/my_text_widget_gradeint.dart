@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-import '../../constants/app_colors.dart';
-import '../../constants/app_fonts.dart';
+import '../../config/constants/app_colors.dart';
+import '../../config/constants/app_fonts.dart';
 
 // ignore: must_be_immutable
 class MyGradeintText extends StatelessWidget {

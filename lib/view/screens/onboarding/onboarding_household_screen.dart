@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../../../constants/app_colors.dart';
-import '../../../constants/app_fonts.dart';
-import '../../../constants/app_sizes.dart';
+import '../../../config/constants/app_colors.dart';
+import '../../../config/constants/app_fonts.dart';
+import '../../../config/constants/app_sizes.dart';
+import '../../../config/routes/routes_name.dart';
 import '../../widget/my_button.dart';
 import '../../widget/my_text_widget.dart';
-
-
 
 class OnboardingHouseholdScreen extends StatelessWidget {
   const OnboardingHouseholdScreen({super.key});
@@ -26,36 +26,45 @@ class OnboardingHouseholdScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: AppSizes.DEFAULT,
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: (){
-                    Get.back();
-                  },
-                    child: Icon(Icons.arrow_back)),
+                  onTap: () => Get.back(),
+                  child: Icon(Icons.arrow_back),
+                ),
                 Spacer(),
                 MyText(
                   text: "Nice to meet you,\nRobert ✨",
-                  size: 32,
-                  weight: FontWeight.w500,
+                  size: 32.sp,
+                  weight: FontWeight.w600,
                   fontFamily: AppFonts.lexend,
                   letterSpacing: -1.60,
                 ),
-                SizedBox(height: 15,),
+                15.verticalSpace,
                 MyText(
-                  text: "Are we joining an existing household, \nor starting your own?",
+                  text:
+                      "Are we joining an existing household, \nor starting your own?",
                   color: Colors.black.withValues(alpha: 0.50),
-                  size: 16,
+                  size: 16.sp,
                   weight: FontWeight.w300,
                 ),
                 Spacer(),
                 Spacer(),
-                MyButton(buttonText: "Join a household", onTap: (){}),
-                SizedBox(height: 10,),
-                MyButton(buttonText: "Start my own", onTap: (){}),
-
+                MyButton(
+                  buttonText: "Join a household",
+                  fontSize: 16.sp,
+                  onTap: () => Get.toNamed(RouteName.onboardingCreateScreen),
+                  height: 50.h,
+                ),
+                15.verticalSpace,
+                MyButton(
+                  buttonText: "Start my own",
+                  fontSize: 16.sp,
+                  onTap: () => Get.toNamed(RouteName.onboardingCreateScreen),
+                  height: 50.h,
+                ),
               ],
             ),
           ),

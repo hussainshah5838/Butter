@@ -1,4 +1,4 @@
-import 'package:butter/constants/app_fonts.dart';
+import 'package:butter/config/constants/app_fonts.dart';
 import 'package:butter/view/widget/common_image_view_widget.dart';
 import 'package:butter/view/widget/my_button.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../../constants/app_colors.dart';
+import '../../config/constants/app_colors.dart';
 import '../../generated/assets.dart';
 
 class BottomSheets {
@@ -24,16 +24,14 @@ class BottomSheets {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-               MyText(
-                 text: "Dirty Dog’s Car Wash Kennesaw",
-                 size: 20,
-                 weight: FontWeight.w400,
-                 color: kSecondaryColor,
-                 fontFamily: AppFonts.inter,
-               ),
-                SizedBox(
-                  height: 12,
+                MyText(
+                  text: "Dirty Dog’s Car Wash Kennesaw",
+                  size: 20,
+                  weight: FontWeight.w400,
+                  color: kSecondaryColor,
+                  fontFamily: AppFonts.inter,
                 ),
+                SizedBox(height: 12),
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: ShapeDecoration(
@@ -51,11 +49,9 @@ class BottomSheets {
                         weight: FontWeight.w500,
                         fontFamily: AppFonts.inter,
                       ),
-
-
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -78,53 +74,53 @@ class BottomSheets {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-               Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   SizedBox(width: 10,),
-                   MyText(
-                     text: "4 Alarm Graphene",
-                     size: 20,
-                     weight: FontWeight.w600,
-                     color: kSecondaryColor,
-                     fontFamily: AppFonts.inter,
-                   ),
-                   InkWell(
-                     onTap: (){
-                       Get.back();
-                     },
-                       child: Icon(Icons.close)),
-                 ],
-               ),
-                SizedBox(
-                  height: 36,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(width: 10),
+                    MyText(
+                      text: "4 Alarm Graphene",
+                      size: 20,
+                      weight: FontWeight.w600,
+                      color: kSecondaryColor,
+                      fontFamily: AppFonts.inter,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Icon(Icons.close),
+                    ),
+                  ],
                 ),
+                SizedBox(height: 36),
                 CommonImageView(
                   //svgPath: Assets.svgScan,
                 ),
-                SizedBox(height: 8,),
+                SizedBox(height: 8),
                 MyText(
                   text: "84790341",
                   size: 14,
                   weight: FontWeight.w400,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 16,),
+                SizedBox(height: 16),
                 MyText(
-                  text: "Scan your code at any Dirty Dog’s location\n to redeem your 4 Alarm Graphene!",
+                  text:
+                      "Scan your code at any Dirty Dog’s location\n to redeem your 4 Alarm Graphene!",
                   size: 14,
                   weight: FontWeight.w600,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 45,),
+                SizedBox(height: 45),
                 MyBorderButton(
                   borderColor: kSecondaryColor,
-                    radius: 15,
-                    onTap: (){
+                  radius: 15,
+                  onTap: () {
                     Get.back();
-                    },
-                    buttonText: "Cancel")
-
+                  },
+                  buttonText: "Cancel",
+                ),
               ],
             ),
           ),
@@ -165,7 +161,7 @@ class BottomSheets {
                   fontFamily: AppFonts.inter,
                 ),
 
-                SizedBox(height: 10,),
+                SizedBox(height: 10),
                 SizedBox(
                   height: 85,
                   child: ListView.builder(
@@ -180,48 +176,51 @@ class BottomSheets {
                               //imagePath: Assets.imagesFl,
                               height: 65,
                             ),
-                            SizedBox(height: 3,),
+                            SizedBox(height: 3),
                             MyText(
                               text: "First Last",
                               size: 11,
                               weight: FontWeight.w400,
-                            )
+                            ),
                           ],
                         ),
                       );
                     },
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 10),
                 SizedBox(
                   height: 70,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: Column(
-                        children: [
-                          CommonImageView(
-                            //imagePath: Assets.imagesAppName,
-                            height: 50,
-                          ),
-                          SizedBox(height: 3,),
-                          MyText(
-                            text: "App Name",
-                            size: 11,
-                            weight: FontWeight.w400,
-                          )
-                        ],
-                      ),
-                    );
-                  },
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Column(
+                          children: [
+                            CommonImageView(
+                              //imagePath: Assets.imagesAppName,
+                              height: 50,
+                            ),
+                            SizedBox(height: 3),
+                            MyText(
+                              text: "App Name",
+                              size: 11,
+                              weight: FontWeight.w400,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ),
 
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 13,
+                  ),
                   decoration: ShapeDecoration(
                     color: kWhiteBgColor,
                     shape: RoundedRectangleBorder(
@@ -237,14 +236,17 @@ class BottomSheets {
                         weight: FontWeight.w600,
                       ),
                       CommonImageView(
-                       // svgPath: Assets.svgCopy,
-                      )
+                        // svgPath: Assets.svgCopy,
+                      ),
                     ],
                   ),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(height: 15),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 13,
+                  ),
                   decoration: ShapeDecoration(
                     color: kWhiteBgColor,
                     shape: RoundedRectangleBorder(
@@ -263,10 +265,10 @@ class BottomSheets {
                           ),
                           CommonImageView(
                             //svgPath: Assets.svgReadingList,
-                          )
+                          ),
                         ],
                       ),
-                      SizedBox(height: 20,),
+                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -277,10 +279,10 @@ class BottomSheets {
                           ),
                           CommonImageView(
                             //svgPath: Assets.svgBookmark,
-                          )
+                          ),
                         ],
                       ),
-                      SizedBox(height: 20,),
+                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -290,11 +292,11 @@ class BottomSheets {
                             weight: FontWeight.w600,
                           ),
                           CommonImageView(
-                           // svgPath: Assets.svgStar,
-                          )
+                            // svgPath: Assets.svgStar,
+                          ),
                         ],
                       ),
-                      SizedBox(height: 20,),
+                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -304,15 +306,14 @@ class BottomSheets {
                             weight: FontWeight.w600,
                           ),
                           CommonImageView(
-                           // svgPath: Assets.svgFind,
-                          )
+                            // svgPath: Assets.svgFind,
+                          ),
                         ],
                       ),
-
                     ],
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: MyText(
@@ -321,8 +322,7 @@ class BottomSheets {
                     weight: FontWeight.w600,
                     color: kYellowColor,
                   ),
-                )
-
+                ),
               ],
             ),
           ),
@@ -330,8 +330,4 @@ class BottomSheets {
       },
     );
   }
-
-
-
-
 }

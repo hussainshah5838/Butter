@@ -1,10 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../constants/app_colors.dart';
-import '../../constants/app_fonts.dart';
+import '../../config/constants/app_colors.dart';
+import '../../config/constants/app_fonts.dart';
 import 'custom_animated_row.dart';
 import 'my_text_widget.dart';
 
@@ -46,18 +44,12 @@ class _TermsCheckboxState extends State<TermsCheckbox> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: _isChecked ? kYellowColor : null,
-              border: Border.all(
-                color: kYellowColor,
-                width: 2,
-              ),
+              border: Border.all(color: kYellowColor, width: 2),
             ),
-            child: _isChecked
-                ? Icon(
-                    Icons.check,
-                    color: kSecondaryColor,
-                    size: 15,
-                  )
-                : null,
+            child:
+                _isChecked
+                    ? Icon(Icons.check, color: kSecondaryColor, size: 15)
+                    : null,
           ),
         ),
         SizedBox(width: 10),
@@ -74,9 +66,6 @@ class _TermsCheckboxState extends State<TermsCheckbox> {
     );
   }
 }
-
-
-
 
 class RichTermCheckBox extends StatefulWidget {
   final Function(bool) onChanged;
@@ -107,18 +96,12 @@ class _RichTermCheckBoxState extends State<RichTermCheckBox> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: _isChecked ? kYellowColor : null,
-              border: Border.all(
-                color: kYellowColor,
-                width: 2,
-              ),
+              border: Border.all(color: kYellowColor, width: 2),
             ),
-            child: _isChecked
-                ? Icon(
-              Icons.check,
-              color: kSecondaryColor,
-              size: 15,
-            )
-                : null,
+            child:
+                _isChecked
+                    ? Icon(Icons.check, color: kSecondaryColor, size: 15)
+                    : null,
           ),
         ),
         SizedBox(width: 10),

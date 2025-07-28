@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-import '../../constants/app_colors.dart';
+import '../../config/constants/app_colors.dart';
 import 'my_text_widget.dart';
 
 // ignore: must_be_immutable
@@ -32,9 +31,7 @@ class MyBullet extends StatelessWidget {
               textAlign: TextAlign.justify,
             ),
           ),
-          SizedBox(
-            width: 10,
-          )
+          SizedBox(width: 10),
         ],
       ),
     );
