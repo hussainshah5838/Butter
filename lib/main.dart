@@ -17,9 +17,9 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import 'constants/app_colors.dart';
 import 'constants/app_fonts.dart';
+import 'constants/app_theme.dart';
 import 'localization/controller.dart';
 import 'localization/user_pref.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +29,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, });
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -37,12 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       translations: Localization(),
       fallbackLocale: Localization.fallBackLocale,
-      theme: ThemeData(
-        fontFamily: AppFonts.inter,
-        useMaterial3: true,
-        scaffoldBackgroundColor: kWhiteBgColor,
-        appBarTheme: AppBarTheme(backgroundColor: kWhiteBgColor),
-      ),
+      theme: AppTheme.lightTheme(),
       home: AccountScreen(),
       defaultTransition: Transition.fadeIn,
     );
