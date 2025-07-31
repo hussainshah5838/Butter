@@ -1,5 +1,6 @@
-import 'package:butter/view/screens/home/home_screen.dart';
+import 'package:butter/view/screens/list/list_screen.dart';
 import 'package:butter/view/screens/main/main.dart';
+import 'package:butter/view/screens/marge_screens/marge_screen.dart';
 import 'package:butter/view/screens/onboarding/onboarding_create_screen.dart';
 import 'package:butter/view/screens/onboarding/onboarding_success_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,10 @@ import '../../view/screens/onboarding/onboarding_household_screen.dart';
 
 class AppRoutes {
   static appRoutes() => [
-    GetPage(name: RouteName.splashScreen, page: () => const Main()),
+    GetPage(
+      name: RouteName.splashScreen,
+      page: () => const SelectLoginScreen(),
+    ),
     GetPage(
       name: RouteName.signUpInScreen,
       page: () => const SelectLoginScreen(),
@@ -44,5 +48,6 @@ class AppRoutes {
       page: () => const AddVoiceConfirmScreen(),
     ),
     GetPage(name: RouteName.main, page: () => const Main()),
+    GetPage(name: RouteName.margeScreen, page: () => const MargeScreen()),
   ];
 }

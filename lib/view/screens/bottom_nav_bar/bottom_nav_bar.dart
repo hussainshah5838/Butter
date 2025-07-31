@@ -9,7 +9,7 @@ import '../../widget/custom_appbar.dart';
 import '../../widget/drawer.dart';
 import '../../widget/my_text_widget.dart';
 import '../add/bottom_sheet.dart';
-import '../home/home_screen.dart';
+import '../list/list_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   final int initialIndex;

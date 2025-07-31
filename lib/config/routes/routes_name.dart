@@ -15,4 +15,7 @@ class RouteName {
 
   /// Home
   static const String main = '/main';
+
+  /// Marge
+  static const String margeScreen = '/MargeScreen';
 }
