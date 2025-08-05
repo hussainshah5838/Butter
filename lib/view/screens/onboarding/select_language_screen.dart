@@ -1,14 +1,11 @@
-import 'package:butter/config/constants/app_fonts.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:flutter/material.dart';
 import '../../../config/constants/app_colors.dart';
 import '../../../config/constants/app_sizes.dart';
-import '../../../generated/assets.dart';
 import '../../../localization/controller.dart';
 import '../../../localization/user_pref.dart';
 import '../../widget/common_image_view_widget.dart';
+import 'package:butter/config/constants/app_fonts.dart';
 import '../../widget/custom_appbar.dart';
 import '../../widget/my_text_widget.dart';
 

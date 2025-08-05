@@ -1,5 +1,5 @@
 import 'package:butter/config/routes/routes.dart';
-import 'package:butter/view/screens/Account/account_screen.dart';
+import 'package:butter/view/screens/account_screen/account_screen.dart';
 import 'package:butter/view/screens/auth/login/login.dart';
 import 'package:butter/view/screens/launch/splash_screen.dart';
 import 'package:flutter/material.dart';

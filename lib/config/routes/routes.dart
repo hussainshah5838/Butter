@@ -1,3 +1,4 @@
+import 'package:butter/view/screens/account_screen/account_screen.dart';
 import 'package:butter/view/screens/list/list_screen.dart';
 import 'package:butter/view/screens/main/main.dart';
 import 'package:butter/view/screens/marge_screens/marge_screen.dart';
@@ -15,10 +16,7 @@ import '../../view/screens/onboarding/onboarding_household_screen.dart';
 
 class AppRoutes {
   static appRoutes() => [
-    GetPage(
-      name: RouteName.splashScreen,
-      page: () => const SelectLoginScreen(),
-    ),
+    GetPage(name: RouteName.splashScreen, page: () => const Main()),
     GetPage(
       name: RouteName.signUpInScreen,
       page: () => const SelectLoginScreen(),

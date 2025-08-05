@@ -40,7 +40,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -75,15 +74,13 @@ class AnimatedRow extends StatelessWidget {
         MoveEffect(
           duration: Duration(milliseconds: animationDuration ?? 400),
           begin: const Offset(20, 0),
-        )
+        ),
       ],
       child: Row(
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
         mainAxisSize: mainAxisSize ?? MainAxisSize.max,
-        children: spacing != null
-            ? _addSpacing(children, spacing!)
-            : children,
+        children: spacing != null ? _addSpacing(children, spacing!) : children,
       ),
     );
   }
