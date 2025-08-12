@@ -5,9 +5,7 @@ import 'package:butter/view/widget/bottom_sheets/add_sheet/add_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../drawer_screen/drawer_screen.dart';
-import '../marge_screens/marge_screen.dart';
 
 class Main extends StatefulWidget {
   const Main({super.key});
@@ -70,28 +68,25 @@ class _MainState extends State<Main> {
 
   _bottomNavBarContent() {
     return Obx(() {
-      return SizedBox(
-        height: 0.1.sh,
-        child: BottomNavigationBar(
-          currentIndex: selectedIndex.value,
-          onTap: (index) {
-            if (index == 1) {
-              Get.toNamed(RouteName.margeScreen);
-            } else {
-              selectedIndexChange(index);
-            }
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.checklist_rtl_outlined),
-              label: 'List',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.messenger_outline_rounded),
-              label: 'Marge',
-            ),
-          ],
-        ),
+      return BottomNavigationBar(
+        currentIndex: selectedIndex.value,
+        onTap: (index) {
+          if (index == 1) {
+            Get.toNamed(RouteName.margeScreen);
+          } else {
+            selectedIndexChange(index);
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.checklist_rtl_outlined),
+            label: 'List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.messenger_outline_rounded),
+            label: 'Marge',
+          ),
+        ],
       );
     });
   }

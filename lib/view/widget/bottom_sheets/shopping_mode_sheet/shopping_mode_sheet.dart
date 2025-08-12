@@ -219,7 +219,7 @@ class ShoppingModeSheet {
                       ),
                     ),
                     child: MyText(
-                      text: "Start Shopping",
+                      text: "Complete Shopping",
                       size: 16.sp,
                       weight: FontWeight.bold,
                     ),

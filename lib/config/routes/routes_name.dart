@@ -12,10 +12,21 @@ class RouteName {
   static const String onboardingAddScreen = '/OnboardingAdd';
   static const String onboardingAddVoiceConfirmScreen =
       '/OnboardingAddVoiceConfirm';
+  static const String onboardingHouseholdJoinScreen =
+      '/OnboardingHouseholdJoin';
 
   /// Home
   static const String main = '/main';
 
   /// Marge
   static const String margeScreen = '/MargeScreen';
+
+  /// Activity
+  static const String activityScreen = "/ActivityScreen";
+
+  // Account
+  static const String accountScreen = "/AccountScreen";
+
+  // Categories
+  static const String categoriesScreen = "/CategoriesScreen";
 }

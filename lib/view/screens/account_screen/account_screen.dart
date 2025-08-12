@@ -98,7 +98,7 @@ class _AccountScreenState extends State<AccountScreen> {
           Spacer(),
 
           // Delete Account Button
-          Container(
+          SizedBox(
             width: double.infinity,
             child: MyBorderButton(
               onTap: () {

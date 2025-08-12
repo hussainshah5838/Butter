@@ -12,6 +12,16 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> categories = [
+      "Bakery",
+      "Fruits & Vegetables",
+      "Dairy Products",
+      "Meat & Seafood",
+      "Beverages",
+      "Snacks & Sweets",
+      "Condiments & Spices",
+      "Frozen Foods",
+    ];
     return Scaffold(
       appBar: CustomAppBar(
         title: "",
@@ -44,7 +54,7 @@ class CategoriesScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
                 ListView.builder(
-                  itemCount: 4,
+                  itemCount: categories.length,
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
@@ -58,7 +68,7 @@ class CategoriesScreen extends StatelessWidget {
                               MyBottomSheet.deleteCategorySheet(context);
                             },
                             child: MyText(
-                              text: "Bakery",
+                              text: categories[index],
                               size: 16,
                               weight: FontWeight.w400,
                             ),

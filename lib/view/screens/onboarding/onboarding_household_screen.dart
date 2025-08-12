@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../../../config/constants/app_colors.dart';
 import '../../../config/constants/app_fonts.dart';
-import '../../../config/constants/app_sizes.dart';
 import '../../../config/routes/routes_name.dart';
 import '../../widget/my_button.dart';
 import '../../widget/my_text_widget.dart';
@@ -55,7 +51,9 @@ class OnboardingHouseholdScreen extends StatelessWidget {
                 MyButton(
                   buttonText: "Join a household",
                   fontSize: 16.sp,
-                  onTap: () => Get.toNamed(RouteName.onboardingCreateScreen),
+                  onTap:
+                      () =>
+                          Get.toNamed(RouteName.onboardingHouseholdJoinScreen),
                   height: 50.h,
                 ),
                 15.verticalSpace,

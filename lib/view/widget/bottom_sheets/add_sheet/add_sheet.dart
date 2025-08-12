@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../generated/assets.dart';
+import '../../../../main.dart' as RouteName;
+import '../../../screens/onboarding/add_voice_confirm_screen.dart';
+import '../../my_button.dart';
 
 class AddSheet extends StatefulWidget {
   static void show() {
@@ -29,6 +32,8 @@ class _AddSheetState extends State<AddSheet> with TickerProviderStateMixin {
   final TextEditingController _textController = TextEditingController();
   late AnimationController _pulseController;
   late Animation<double> _pulseAnimation;
+
+  RxBool confirmItems = false.obs;
 
   @override
   void initState() {
@@ -65,7 +70,7 @@ class _AddSheetState extends State<AddSheet> with TickerProviderStateMixin {
 
   void _onSubmitText() {
     if (_textController.text.trim().isNotEmpty) {
-      Get.back();
+      confirmItems.value = true;
     }
   }
 
@@ -95,7 +100,9 @@ class _AddSheetState extends State<AddSheet> with TickerProviderStateMixin {
           Expanded(
             child: Obx(
               () =>
-                  isRecording.value
+                  confirmItems.value
+                      ? _buildConfirmView()
+                      : isRecording.value
                       ? _buildListeningView()
                       : _buildRecordingView(),
             ),
@@ -263,6 +270,202 @@ class _AddSheetState extends State<AddSheet> with TickerProviderStateMixin {
         const Spacer(),
         const Spacer(),
       ],
+    );
+  }
+
+  Widget _buildConfirmView() {
+    /// DUMMY DATA WILL BE REPLACED WITH REAL DATA
+    List<ProductItem> items = [
+      ProductItem(title: "Bananas"),
+      ProductItem(title: "Carrots", quantity: "1"),
+      ProductItem(title: "Cherry toms"),
+      ProductItem(title: "Olive oil"),
+      ProductItem(title: "Bananas"),
+      ProductItem(title: "Carrots", quantity: "1"),
+      ProductItem(title: "Cherry toms"),
+      ProductItem(title: "Olive oil"),
+      ProductItem(title: "Bananas"),
+      ProductItem(title: "Carrots", quantity: "1"),
+      ProductItem(title: "Cherry toms"),
+      ProductItem(title: "Olive oil"),
+      ProductItem(
+        title: "Spinach",
+        subtitle: "The prewashed ones with the purple label",
+        quantity: "2",
+      ),
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Back button
+        MyText(
+          text: "Confirm items",
+          size: 32.sp,
+          weight: FontWeight.w500,
+          letterSpacing: -1.60,
+          fontFamily: AppFonts.lexend,
+        ),
+        4.verticalSpace,
+        MyText(
+          text: "Tap to edit. Swipe left to delete.",
+          size: 14.sp,
+          color: Colors.black.withValues(alpha: 0.50),
+          weight: FontWeight.w300,
+        ),
+
+        24.verticalSpace,
+
+        Expanded(
+          child:
+              items.isEmpty
+                  ? Center(
+                    child: MyText(
+                      text: "No items added yet",
+                      size: 16.sp,
+                      color: Colors.black.withValues(alpha: 0.50),
+                      weight: FontWeight.w300,
+                    ),
+                  )
+                  : ListView.separated(
+                    itemCount: items.length,
+                    separatorBuilder: (context, index) => _buildDivider(),
+                    itemBuilder: (context, index) {
+                      final item = items[index];
+                      return _buildProductTile(
+                        index: index,
+                        title: item.title,
+                        subtitle: item.subtitle,
+                        trailingText: item.quantity,
+                      );
+                    },
+                  ),
+        ),
+
+        8.verticalSpace,
+
+        // MyButton(
+
+        //   buttonText: "Looks good",
+        //   height: 50.h,
+        // ),
+        MyButton(
+          onTap: () => Get.back(),
+          buttonText: "Looks good",
+          height: 50.h,
+        ),
+        MyButton(
+          onTap: () => confirmItems.value = false,
+          buttonText: "Canel",
+          backgroundColor: kWhiteBgColor,
+          height: 50.h,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProductTile({
+    required int index,
+    required String title,
+    String? subtitle,
+    String? trailingText,
+  }) {
+    return Dismissible(
+      key: Key('${title}_$index'),
+      direction: DismissDirection.endToStart,
+      background: Container(
+        alignment: Alignment.centerRight,
+        padding: EdgeInsets.only(right: 20.w),
+        decoration: BoxDecoration(
+          color: Colors.red.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.delete_outline, color: Colors.red),
+            4.verticalSpace,
+            MyText(
+              text: "Delete",
+              size: 12.sp,
+              color: Colors.red,
+              weight: FontWeight.w500,
+            ),
+          ],
+        ),
+      ),
+      onDismissed: (direction) {
+        // _deleteItem(index);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 12.h),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Main content
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  10.verticalSpace,
+                  MyText(
+                    text: title,
+                    size: 16.sp,
+                    color: kBlackColor,
+                    weight: FontWeight.w600,
+                  ),
+                  if (subtitle != null) ...[
+                    4.verticalSpace,
+                    MyText(
+                      text: subtitle,
+                      size: 12.sp,
+                      weight: FontWeight.w300,
+                      color: Colors.black.withValues(alpha: 0.50),
+                    ),
+                  ],
+                  10.verticalSpace,
+                ],
+              ),
+            ),
+
+            // Trailing content
+            if (trailingText != null) ...[
+              16.horizontalSpace,
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.05),
+                  borderRadius: BorderRadius.circular(16.r),
+                  border: Border.all(
+                    color: Colors.black.withValues(alpha: 0.1),
+                    width: 1,
+                  ),
+                ),
+                child: MyText(
+                  text: trailingText,
+                  size: 12.sp,
+                  color: kBlackColor,
+                  weight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDivider() {
+    return Divider(
+      height: 1.h,
+      thickness: 1,
+      color: Colors.black.withValues(alpha: 0.08),
+      indent: 0,
+      endIndent: 0,
     );
   }
 }

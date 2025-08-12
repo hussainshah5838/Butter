@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../config/constants/app_colors.dart';
+import '../../widget/bottom_sheets/edit_item_sheet/edit_item_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -154,92 +155,98 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildProductTile(Product product) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.only(bottom: 8.h),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //  Bullet Circle
-              GestureDetector(
-                onTap: () => controller.toggleProductSelection(product.id),
-                child: Obx(
-                  () => Container(
-                    width: 24.w,
-                    height: 24.w,
-                    margin: EdgeInsets.only(right: 16.w, top: 2.h),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
+    return GestureDetector(
+      onLongPress: () => EditItemSheet.show(product),
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(bottom: 8.h),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //  Bullet Circle
+                GestureDetector(
+                  onTap: () => controller.toggleProductSelection(product.id),
+                  child: Obx(
+                    () => Container(
+                      width: 24.w,
+                      height: 24.w,
+                      margin: EdgeInsets.only(right: 16.w, top: 2.h),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color:
+                              controller.isProductSelected(product.id)
+                                  ? kYellowColor
+                                  : Colors.grey[400]!,
+                          width: 2.w,
+                        ),
                         color:
                             controller.isProductSelected(product.id)
                                 ? kYellowColor
-                                : Colors.grey[400]!,
-                        width: 2.w,
+                                : Colors.transparent,
                       ),
-                      color:
+                      child:
                           controller.isProductSelected(product.id)
-                              ? kYellowColor
-                              : Colors.transparent,
+                              ? Icon(
+                                Icons.check,
+                                color: Colors.white,
+                                size: 16.sp,
+                              )
+                              : null,
                     ),
-                    child:
-                        controller.isProductSelected(product.id)
-                            ? Icon(
-                              Icons.check,
-                              color: Colors.white,
-                              size: 16.sp,
-                            )
-                            : null,
                   ),
                 ),
-              ),
 
-              // Product Info
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MyText(
-                      text: product.name,
-                      size: 18.sp,
-                      weight: FontWeight.bold,
-                      color: kBlackColor,
-                    ),
-                    if (product.subtitle != null) ...[
-                      SizedBox(height: 4.h),
+                // Product Info
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       MyText(
-                        text: product.subtitle!,
-                        size: 14.sp,
-                        weight: FontWeight.w400,
-                        color: Colors.grey[600]!,
+                        text: product.name,
+                        size: 18.sp,
+                        weight: FontWeight.bold,
+                        color: kBlackColor,
                       ),
+                      if (product.subtitle != null) ...[
+                        SizedBox(height: 4.h),
+                        MyText(
+                          text: product.subtitle!,
+                          size: 14.sp,
+                          weight: FontWeight.w400,
+                          color: Colors.grey[600]!,
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
 
-              // Quantity Badge
-              if (product.quantity > 1)
-                Container(
-                  margin: EdgeInsets.only(left: 12.w),
-                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-                  decoration: BoxDecoration(
-                    color: kYellowColor.withAlpha(100),
-                    borderRadius: BorderRadius.circular(12.r),
+                // Quantity Badge
+                if (product.quantity > 1)
+                  Container(
+                    margin: EdgeInsets.only(left: 12.w),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.w,
+                      vertical: 4.h,
+                    ),
+                    decoration: BoxDecoration(
+                      color: kYellowColor.withAlpha(100),
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    child: MyText(
+                      text: "${product.quantity}",
+                      size: 12.sp,
+                      weight: FontWeight.w600,
+                    ),
                   ),
-                  child: MyText(
-                    text: "${product.quantity}",
-                    size: 12.sp,
-                    weight: FontWeight.w600,
-                  ),
-                ),
-            ],
+              ],
+            ),
           ),
-        ),
-        Divider(),
-        12.verticalSpace,
-      ],
+          Divider(),
+          12.verticalSpace,
+        ],
+      ),
     );
   }
 
