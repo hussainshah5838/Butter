@@ -1,3 +1,4 @@
+import 'package:butter/constants/app_fonts.dart';
 import 'package:butter/constants/app_sizes.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -5,16 +6,27 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../constants/app_colors.dart';
+import '../screens/Account/account_screen.dart';
+import '../screens/Activity/activity_screen.dart';
 import '../screens/bottom_nav_bar/bottom_nav_bar.dart';
+import '../screens/categories/categories_screen.dart';
 import '../screens/dialogs/dialogs.dart';
+import '../screens/household/house_hold_screen.dart';
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
   final void Function(int index)? onItemSelected;
   const CustomDrawer({super.key,this.onItemSelected});
 
   @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  int selectedIndex = 0;
+  @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: kPrimaryColor,
       child: Padding(
         padding: AppSizes.DEFAULT,
         child: SafeArea(
@@ -29,53 +41,34 @@ class CustomDrawer extends StatelessWidget {
                 },
                   child: Icon(Icons.close)),
               SizedBox(height: 20,),
-              _buildDrawerItem("save_with_our_memberships".tr,  () {
-                //onItemSelected?.call(2); // trigger callback with index 2
-                Get.offAll(() => BottomNavBar(initialIndex: 2));
+              _buildDrawerItem("Activity",0,  () {
+                Get.to(()=>ActivityScreen());
               }),
-              _buildDrawerItem("buy_a_wash".tr,  () {
-                //Get.to(()=>BuyAWashScreen(check: false,));
+              _buildDrawerItem("Categories",1,  () {
+                Get.to(()=>CategoriesScreen());
               }),
-              _buildDrawerItem("my_account".tr,  () {
-               // Get.to(()=>ProfileScreen());
+              _buildDrawerItem("Profile", 2, () {
+                Get.to(()=>AccountScreen());
               }),
-              _buildDrawerItem("wash_history".tr,  () {
-                //onItemSelected?.call(1); // trigger callback with index 2
-                //Navigator.pop(context);
-                Get.offAll(() => BottomNavBar(initialIndex: 1)); // close drawer
+              _buildDrawerItem("Household", 3, () {
+                Get.to(()=>HouseHoldScreen()); // close drawer
               }),
-              _buildDrawerItem("about_us".tr,  () {
-               // Get.to(()=>AboutUsScreen());
+              Spacer(),
+              _buildDrawerItem2("Share app",  () {
+                // Get.to(()=>ProfileScreen());
               }),
-              _buildDrawerItem("locations".tr,  () {
-                // close drawer
+              _buildDrawerItem2("Rate app",  () {
+                // Get.to(()=>ProfileScreen());
               }),
-              _buildDrawerItem("faqs".tr,  () {
-                //Get.to(()=>AppNavigationTipsScreen());
+              _buildDrawerItem2("Give feedback",  () {
+                // Get.to(()=>ProfileScreen());
               }),
-              _buildDrawerItem("app_Navigation_Tips".tr,  () {
-               //Get.to(()=>FaqsScreen());
+              _buildDrawerItem2("Support",  () {
+                // Get.to(()=>ProfileScreen());
               }),
-              _buildDrawerItem("privacy_policy".tr,  () {
-                //Get.to(()=>PrivacyPolicyScreen());
+              _buildDrawerItem2("Sign out",  () {
+                // Get.to(()=>ProfileScreen());
               }),
-              _buildDrawerItem("terms_of_use".tr,  () {
-                //Get.to(()=>TermOfUseScreen());
-              }),
-              _buildDrawerItem("contact_us".tr,  () {
-               // Get.to(()=>ContactUsScreen());
-              }),
-              Padding(
-                padding: AppSizes.HORIZONTAL,
-                child: ListTile(
-                  minTileHeight: 0,
-                  contentPadding: EdgeInsets.zero,
-                  title: MyText(text: "logout1".tr,size: 16,weight: FontWeight.w600,),
-                  onTap: (){
-                    DialogHelper.logoutDialog(context);
-                  },
-                ),
-              ),
             ],
           ),
         ),
@@ -83,19 +76,53 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 
-  Widget _buildDrawerItem(String title, VoidCallback onTap) {
+  Widget _buildDrawerItem(String title, int index, VoidCallback onTap) {
+    bool isSelected = selectedIndex == index;
+
     return Padding(
-      padding: AppSizes.HORIZONTAL,
-      child: Column(
-        children: [
-          ListTile(
-            minTileHeight: 0,
-            contentPadding: EdgeInsets.zero,
-            title: MyText(text: title,size: 16,weight: FontWeight.w600,),
-            onTap: onTap,
-          ),
-          Divider(color: kTertiaryColor.withOpacity(0.3),),
-        ],
+      padding: const EdgeInsets.only(bottom: 15),
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            selectedIndex = index;
+          });
+          onTap();
+        },
+        child: Row(
+          children: [
+            MyText(
+              text: title,
+              size: 32,
+              weight: FontWeight.w500,
+              fontFamily: AppFonts.lexend,
+              letterSpacing: -1.60,
+            ),
+            const SizedBox(width: 8),
+            if (isSelected)
+              Container(
+                width: 12,
+                height: 12,
+                decoration: ShapeDecoration(
+                  color: kYellowColor,
+                  shape: const OvalBorder(),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDrawerItem2(String title, VoidCallback onTap) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: GestureDetector(
+        onTap: onTap,
+        child: MyText(
+          text: title,
+          size: 20,
+          weight: FontWeight.w600,
+        ),
       ),
     );
   }

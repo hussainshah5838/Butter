@@ -1,3 +1,4 @@
+import 'package:butter/view/screens/onboarding/onboarding_create_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -52,9 +53,13 @@ class OnboardingHouseholdScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 Spacer(),
-                MyButton(buttonText: "Join a household", onTap: (){}),
+                MyButton(buttonText: "Join a household", onTap: (){
+                  Get.to(()=>OnboardingCreateScreen());
+                }),
                 SizedBox(height: 10,),
-                MyButton(buttonText: "Start my own", onTap: (){}),
+                MyButton(buttonText: "Start my own", onTap: (){
+                  Get.to(()=>OnboardingCreateScreen());
+                }),
 
               ],
             ),

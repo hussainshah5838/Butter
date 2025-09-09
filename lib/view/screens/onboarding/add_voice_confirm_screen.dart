@@ -1,4 +1,5 @@
 import 'package:butter/constants/app_fonts.dart';
+import 'package:butter/view/screens/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:butter/view/widget/my_button.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,9 @@ class AddVoiceConfirmScreen extends StatelessWidget {
                 Divider(),
 
                 Spacer(),
-                MyButton(onTap: (){}, buttonText: "Looks good"),
+                MyButton(onTap: (){
+                  Get.to(()=>BottomNavBar());
+                }, buttonText: "Looks good"),
                 SizedBox(height: 10,),
                 Align(
                   alignment: Alignment.center,

@@ -6,6 +6,8 @@ import '../../../constants/app_fonts.dart';
 import '../../../constants/app_sizes.dart';
 import '../../widget/my_button.dart';
 import '../../widget/my_text_widget.dart';
+import 'add_tap_and_speak_screen.dart';
+import 'add_voice_confirm_screen.dart';
 
 
 
@@ -48,7 +50,9 @@ class OnboardingSuccessScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 Spacer(),
-                MyButton(buttonText: "Let’s do it", onTap: (){}),
+                MyButton(buttonText: "Let’s do it", onTap: (){
+                  Get.to(()=>AddTapAndSpeakScreen());
+                }),
 
               ],
             ),

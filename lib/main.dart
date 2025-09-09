@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: kWhiteBgColor,
         appBarTheme: AppBarTheme(backgroundColor: kWhiteBgColor),
       ),
-      home: AccountScreen(),
+      home: SplashScreen(),
       defaultTransition: Transition.fadeIn,
     );
   }

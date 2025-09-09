@@ -1,3 +1,4 @@
+import 'package:butter/view/screens/onboarding/onboarding_success_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -73,7 +74,9 @@ class OnboardingCreateScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 Spacer(),
-                MyBorderButton(buttonText: "Looks good", onTap: (){})
+                MyBorderButton(buttonText: "Looks good", onTap: (){
+                  Get.to(()=>OnboardingSuccessScreen());
+                })
 
               ],
             ),

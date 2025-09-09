@@ -1,4 +1,5 @@
 import 'package:butter/constants/app_sizes.dart';
+import 'package:butter/view/screens/add/bottom_sheet.dart';
 import 'package:butter/view/widget/common_image_view_widget.dart';
 import 'package:butter/view/widget/custom_appbar.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
@@ -37,8 +38,13 @@ class _AccountScreenState extends State<AccountScreen> {
                 Positioned(
                   right: 5,
                   bottom: 5,
-                  child: CommonImageView(
-                    svgPath: Assets.svgEditAvatar,
+                  child: GestureDetector(
+                    onTap: (){
+                      MyBottomSheet.editAvatarSheet(context);
+                    },
+                    child: CommonImageView(
+                      svgPath: Assets.svgEditAvatar,
+                    ),
                   ),),
               ],
             ),
@@ -63,7 +69,11 @@ class _AccountScreenState extends State<AccountScreen> {
                   size: 14,
                   weight: FontWeight.w600,
                 ),
-                Icon(Icons.arrow_forward_ios,size: 18,),
+                GestureDetector(
+                  onTap: (){
+                    MyBottomSheet.editMetricSheet(context);
+                  },
+                    child: Icon(Icons.arrow_forward_ios,size: 18,)),
               ],
             ),
             Padding(

@@ -577,6 +577,106 @@ class MyBottomSheet {
   }
 
 
+  static void editAvatarSheet(BuildContext context) {
+
+    Get.bottomSheet(
+      ignoreSafeArea: true,
+      isScrollControlled: true,
+      StatefulBuilder(
+        builder: (context, setState) {
+          return SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              padding: AppSizes.DEFAULT,
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          Get.back();
+                        },
+                          child: Icon(Icons.close),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  MyText(
+                    text: "Buttery photos",
+                    size: 12,
+                    weight: FontWeight.w400,
+                    color: Colors.black.withValues(alpha: 0.50),
+                  ),
+                  SizedBox(height: 20,),
+                  SelectableImageGrid(),
+                  SizedBox(height: 20,),
+                  MyBorderButton(
+                    onTap: (){
+                     // DialogHelper.deleteCategoryDialog(context);
+                    },
+                    buttonText: "Choose from library",
+                    textColor: kBlackColor,
+
+                  )
+
+
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  static void editMetricSheet(BuildContext context) {
+
+    Get.bottomSheet(
+      ignoreSafeArea: true,
+      isScrollControlled: true,
+      StatefulBuilder(
+        builder: (context, setState) {
+          return SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              padding: AppSizes.DEFAULT,
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: (){
+                      Get.back();
+                    },
+                    child: Icon(Icons.close),
+                  ),
+                  SizedBox(height: 20,),
+                  UnitSelectionWidget(),
+                  SizedBox(height: 80,),
+
+
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+
 }
 
 
@@ -631,6 +731,151 @@ class _SelectableChipsState extends State<SelectableChips> {
           ),
         );
       }),
+    );
+  }
+}
+
+
+
+
+
+class SelectableImageGrid extends StatefulWidget {
+  const SelectableImageGrid({super.key});
+
+  @override
+  State<SelectableImageGrid> createState() => _SelectableImageGridState();
+}
+
+class _SelectableImageGridState extends State<SelectableImageGrid> {
+  int? selectedIndex;
+
+  final List<String> images = List.generate(9, (_) => Assets.imagesPpf); // Replace with your image paths
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      //padding: const EdgeInsets.all(16),
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: images.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+      ),
+      itemBuilder: (context, index) {
+        final isSelected = index == selectedIndex;
+
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+          child: Container(
+            width: 95,
+            height: 95,
+            decoration: ShapeDecoration(
+              shape: const OvalBorder(),
+              color: Colors.transparent,
+              shadows: isSelected
+                  ? [
+                BoxShadow(
+                  color: const Color(0xFFFFD13B),
+                  spreadRadius: 1.5,
+                  blurRadius: 0,
+                ),
+              ]
+                  : null,
+            ),
+            child: Container(
+              decoration: ShapeDecoration(
+                shape: OvalBorder(
+                  side: BorderSide(
+                    width: 3,
+                    color: isSelected ? kYellowColor : Colors.transparent,
+                  ),
+                ),
+              ),
+              child: CommonImageView(
+                imagePath: images[index],
+                height: 95,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+
+
+
+class UnitSelectionWidget extends StatefulWidget {
+  const UnitSelectionWidget({super.key});
+
+  @override
+  State<UnitSelectionWidget> createState() => _UnitSelectionWidgetState();
+}
+
+class _UnitSelectionWidgetState extends State<UnitSelectionWidget> {
+  String selectedUnit = "Metric"; // Default selected
+
+  Widget buildOption(String label) {
+    final isSelected = selectedUnit == label;
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedUnit = label;
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            MyText(
+              text: label,
+              size: 16,
+              weight: FontWeight.w600,
+              color: isSelected ? Colors.black : Colors.black.withOpacity(0.5),
+            ),
+            if (isSelected)
+              Container(
+                width: 25,
+                height: 25,
+                decoration: const ShapeDecoration(
+                  color: Color(0xFFFFD13B),
+                  shape: OvalBorder(
+                    side: BorderSide(
+                      width: 1.5,
+                      color: Color(0xFFFFD13B),
+                    ),
+                  ),
+                ),
+                child: Icon(
+                  Icons.check,
+                  size: 15,
+                  color: kWhiteBgColor,
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        buildOption("Imperial"),
+        const Divider(),
+        buildOption("Metric"),
+        const Divider(),
+      ],
     );
   }
 }

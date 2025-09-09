@@ -1,4 +1,5 @@
 import 'package:butter/constants/app_fonts.dart';
+import 'package:butter/view/screens/launch/select_login_screen.dart';
 import 'package:butter/view/screens/onboarding/select_language_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,7 @@ import '../../../constants/app_colors.dart';
 import '../../../generated/assets.dart';
 import '../../widget/common_image_view_widget.dart';
 import '../../widget/my_text_widget.dart';
+import '../onboarding/onboarding_create_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -43,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        //Get.to(() => const SelectLanguageScreen());
+        Get.to(() => const SelectLoginScreen());
       }
     });
   }

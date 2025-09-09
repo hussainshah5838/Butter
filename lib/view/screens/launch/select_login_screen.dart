@@ -1,9 +1,12 @@
 import 'package:butter/constants/app_fonts.dart';
 import 'package:butter/constants/app_sizes.dart';
+import 'package:butter/view/screens/onboarding/onboarding_name_screen.dart';
 import 'package:butter/view/widget/common_image_view_widget.dart';
 import 'package:butter/view/widget/my_button.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../constants/app_colors.dart';
 import '../../../generated/assets.dart';
@@ -60,7 +63,9 @@ class SelectLoginScreen extends StatelessWidget {
               ),
               SizedBox(height: 10,),
               CustomButton(
-                onTap: (){},
+                onTap: (){
+                  Get.to(()=>OnboardingNameScreen());
+                },
                 buttonText: "",
                 customChild: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

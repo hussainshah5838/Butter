@@ -1,12 +1,17 @@
+import 'dart:async';
+
 import 'package:butter/constants/app_fonts.dart';
 import 'package:butter/view/widget/common_image_view_widget.dart';
 import 'package:butter/view/widget/my_textfeild.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_sizes.dart';
 import '../../../generated/assets.dart';
 import '../../widget/my_text_widget.dart';
+import 'add_voice_confirm_screen.dart';
 
 
 class AddTapAndSpeakScreen extends StatefulWidget {
@@ -17,7 +22,9 @@ class AddTapAndSpeakScreen extends StatefulWidget {
 }
 
 class _AddTapAndSpeakScreenState extends State<AddTapAndSpeakScreen> {
-  bool isRecording = false;
+  bool isRecording = true;
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,9 +75,16 @@ class _AddTapAndSpeakScreenState extends State<AddTapAndSpeakScreen> {
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 25,),
-                      CommonImageView(
-                        imagePath: Assets.imagesMic,
-                        height: 100,
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            isRecording = false;
+                          });
+                        },
+                        child: CommonImageView(
+                          imagePath: Assets.imagesMic,
+                          height: 100,
+                        ),
                       ),
                       Spacer(),
                       Row(
@@ -151,8 +165,13 @@ class _AddTapAndSpeakScreenState extends State<AddTapAndSpeakScreen> {
                         color: Colors.black.withValues(alpha: 0.50),
                       ),
                       Spacer(),
-                      CommonImageView(
-                        svgPath: Assets.svgStop,
+                      GestureDetector(
+                        onTap: (){
+                          Get.to(()=>AddVoiceConfirmScreen());
+                        },
+                        child: CommonImageView(
+                          svgPath: Assets.svgStop,
+                        ),
                       ),
                       Spacer(),
                       Spacer(),

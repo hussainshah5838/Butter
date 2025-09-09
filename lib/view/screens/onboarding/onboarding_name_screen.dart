@@ -1,9 +1,12 @@
 import 'package:butter/constants/app_fonts.dart';
 import 'package:butter/constants/app_sizes.dart';
+import 'package:butter/view/screens/onboarding/onboarding_household_screen.dart';
 import 'package:butter/view/widget/my_button.dart';
 import 'package:butter/view/widget/my_text_widget.dart';
 import 'package:butter/view/widget/my_textfeild.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../constants/app_colors.dart';
 
@@ -67,7 +70,10 @@ class OnboardingNameScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 Spacer(),
-                MyBorderButton(buttonText: "Looks good", onTap: (){})
+                MyBorderButton(buttonText: "Looks good",
+                    onTap: (){
+                  Get.to(()=>OnboardingHouseholdScreen());
+                })
 
               ],
             ),
