@@ -8,16 +8,10 @@ import '../../../config/routes/routes_name.dart';
 import '../../widget/my_button.dart';
 import '../../widget/my_text_widget.dart';
 
-class OnboardingHouseholdJoinScreen extends StatefulWidget {
-  const OnboardingHouseholdJoinScreen({super.key});
+class OnboardingHouseholdJoinScreen extends StatelessWidget {
+   OnboardingHouseholdJoinScreen({super.key});
+  final RxString name = ''.obs;
 
-  @override
-  State<OnboardingHouseholdJoinScreen> createState() =>
-      _OnboardingHouseholdJoinScreenState();
-}
-
-class _OnboardingHouseholdJoinScreenState
-    extends State<OnboardingHouseholdJoinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +47,7 @@ class _OnboardingHouseholdJoinScreenState
                 ),
                 35.verticalSpace,
                 TextField(
+                  onChanged: (value) => name.value = value,
                   style: TextStyle(
                     fontSize: 32.sp,
                     fontWeight: FontWeight.w500,
@@ -73,14 +68,24 @@ class _OnboardingHouseholdJoinScreenState
                 ),
                 Spacer(),
                 Spacer(),
-                MyBorderButton(
+                Obx(()=>MyBorderButton(
                   buttonText: "Join",
-                  onTap:
-                      () => Get.offAndToNamed(
-                        RouteName.onboardingHouseholdScreen,
-                      ),
+                  onTap:  name.value.isNotEmpty
+                      ? () => Get.offAndToNamed(RouteName.onboardingExistHouseHoldSuccessScreen,)
+                      : () {},
                   height: 50.h,
-                ),
+                  backgroundColor: name.value.isNotEmpty
+                      ? kYellowColor
+                      : Colors.transparent,
+                  borderColor:
+                  name.value.isNotEmpty
+                      ? kYellowColor
+                      : Colors.black.withOpacity(0.25),
+                  textColor:
+                  name.value.isNotEmpty
+                      ? kBlackColor
+                      : Colors.black.withOpacity(0.25),
+                )),
               ],
             ),
           ),

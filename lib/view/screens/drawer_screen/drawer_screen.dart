@@ -68,7 +68,10 @@ class DrawerScreen extends StatelessWidget {
                     ),
                     20.verticalSpace,
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.back();
+                        Get.toNamed(RouteName.houseHoldScreen);
+                      },
                       child: MyText(
                         text: 'Household',
                         size: 32.sp,

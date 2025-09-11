@@ -206,4 +206,54 @@ class DialogHelper {
       ),
     );
   }
+
+
+  static void leaveHouseHoldDialog(BuildContext context) {
+    Get.dialog(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            margin: AppSizes.DEFAULT,
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: kPrimaryColor,
+              borderRadius: BorderRadius.all(Radius.circular(16)),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                MyText(
+                  text: "Are you sure?",
+                  size: 20,
+                  weight: FontWeight.w600,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                MyText(
+                  text:
+                  'You’ll no longer have access to the shared list and history.',
+                  size: 14,
+                  color: kTertiaryColor,
+                  paddingBottom: 16,
+                  weight: FontWeight.w300,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 20),
+                MyButton(
+                  onTap: () {},
+                  buttonText: "Yes, leave",
+                  backgroundColor: kRedColor,
+                  fontColor: kPrimaryColor,
+                ),
+                const SizedBox(height: 10),
+                MyText(text: "No, Stay", size: 14, weight: FontWeight.w300),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

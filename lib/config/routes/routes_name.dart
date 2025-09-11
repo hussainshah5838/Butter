@@ -7,6 +7,7 @@ class RouteName {
   /// Onboarding
   static const String onboardingNameScreen = '/OnboardingName';
   static const String onboardingHouseholdScreen = '/OnboardingHousehold';
+  static const String onboardingExistHouseHoldSuccessScreen = '/onboardingExistHouseHoldSuccessScreen';
   static const String onboardingCreateScreen = '/OnboardingCreate';
   static const String onboardingSuccessScreen = '/OnboardingSuccess';
   static const String onboardingAddScreen = '/OnboardingAdd';
@@ -29,4 +30,7 @@ class RouteName {
 
   // Categories
   static const String categoriesScreen = "/CategoriesScreen";
+
+  static const String houseHoldScreen = "/houseHoldScreen";
+  static const String joinViaDeepLink = "/joinViaDeepLink";
 }

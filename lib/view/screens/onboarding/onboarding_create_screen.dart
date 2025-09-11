@@ -9,7 +9,8 @@ import '../../widget/my_button.dart';
 import '../../widget/my_text_widget.dart';
 
 class OnboardingCreateScreen extends StatelessWidget {
-  const OnboardingCreateScreen({super.key});
+   OnboardingCreateScreen({super.key});
+  final RxString name = ''.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +50,7 @@ class OnboardingCreateScreen extends StatelessWidget {
                 ),
                 35.verticalSpace,
                 TextField(
+                  onChanged: (value) => name.value = value,
                   style: TextStyle(
                     fontSize: 32.sp,
                     fontWeight: FontWeight.w500,
@@ -70,11 +72,24 @@ class OnboardingCreateScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 Spacer(),
-                MyBorderButton(
+                Obx(()=>MyBorderButton(
                   buttonText: "Looks good",
-                  onTap: () => Get.toNamed(RouteName.onboardingSuccessScreen),
+                  onTap:name.value.isNotEmpty
+                      ?  () => Get.toNamed(RouteName.onboardingSuccessScreen)
+                      :  (){},
                   height: 50.h,
-                ),
+                  backgroundColor: name.value.isNotEmpty
+                      ? kYellowColor
+                      : Colors.transparent,
+                  borderColor:
+                  name.value.isNotEmpty
+                      ? kYellowColor
+                      : Colors.black.withOpacity(0.25),
+                  textColor:
+                  name.value.isNotEmpty
+                      ? kBlackColor
+                      : Colors.black.withOpacity(0.25),
+                ),),
               ],
             ),
           ),

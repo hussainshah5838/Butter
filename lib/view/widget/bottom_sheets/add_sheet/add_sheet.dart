@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../generated/assets.dart';
 import '../../../../main.dart' as RouteName;
+import '../../../screens/list/search_bottom_sheet.dart';
 import '../../../screens/onboarding/add_voice_confirm_screen.dart';
 import '../../my_button.dart';
 
@@ -212,6 +213,7 @@ class _AddSheetState extends State<AddSheet> with TickerProviderStateMixin {
 
         // Text input
         MyTextField(
+          onTap: () => SearchBottomSheet.show(context),
           controller: _textController,
           hint: "Type here...",
           suffix: GestureDetector(
@@ -436,14 +438,11 @@ class _AddSheetState extends State<AddSheet> with TickerProviderStateMixin {
             if (trailingText != null) ...[
               16.horizontalSpace,
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                 decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.05),
-                  borderRadius: BorderRadius.circular(16.r),
-                  border: Border.all(
-                    color: Colors.black.withValues(alpha: 0.1),
-                    width: 1,
-                  ),
+                  color: kYellowColor.withAlpha(100),
+                  borderRadius: BorderRadius.circular(4.r),
+
                 ),
                 child: MyText(
                   text: trailingText,

@@ -2,9 +2,11 @@ import 'package:butter/config/constants/app_colors.dart';
 import 'package:butter/config/routes/routes_name.dart';
 import 'package:butter/view/screens/list/list_screen.dart';
 import 'package:butter/view/widget/bottom_sheets/add_sheet/add_sheet.dart';
+import 'package:butter/view/widget/common_image_view_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../generated/assets.dart';
 import '../drawer_screen/drawer_screen.dart';
 
 class Main extends StatefulWidget {
@@ -31,8 +33,8 @@ class _MainState extends State<Main> {
       appBar: _appbar(),
       drawer: const DrawerScreen(),
       body: _bodyContent(),
-      floatingActionButton: _floatingActionButtonContent(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+     // floatingActionButton: _floatingActionButtonContent(),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: _bottomNavBarContent(),
     );
   }
@@ -49,7 +51,7 @@ class _MainState extends State<Main> {
   _floatingActionButtonContent() {
     return FloatingActionButton(
       onPressed: () => AddSheet.show(),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       child: Icon(Icons.add, size: 30.sp, color: kWhiteColor),
     );
   }
@@ -72,15 +74,34 @@ class _MainState extends State<Main> {
         currentIndex: selectedIndex.value,
         onTap: (index) {
           if (index == 1) {
-            Get.toNamed(RouteName.margeScreen);
-          } else {
+            AddSheet.show(); // FAB action here
+          } else if (index == 0
+          ) {
             selectedIndexChange(index);
+          } else if (index == 2) {
+            Get.toNamed(RouteName.margeScreen);
           }
         },
         items: [
+
           BottomNavigationBarItem(
-            icon: Icon(Icons.checklist_rtl_outlined),
+            icon: CommonImageView(
+              imagePath: Assets.imagesList,
+              height: 25,
+            ),
             label: 'List',
+          ),
+          BottomNavigationBarItem(
+            icon: Container(
+              height: 56,
+              width: 56,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.black, // FAB background color
+              ),
+              child: Icon(Icons.add, color: kWhiteColor, size: 28),
+            ),
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.messenger_outline_rounded),
@@ -90,4 +111,5 @@ class _MainState extends State<Main> {
       );
     });
   }
+
 }

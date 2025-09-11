@@ -23,9 +23,9 @@ class HomeController extends GetxController {
       const ProductCategory(
         name: "Produce",
         products: [
-          Product(id: "1", name: "Bananas"),
+          Product(id: "1", name: "Bananas", quantity: 2),
           Product(id: "2", name: "Carrots", quantity: 4),
-          Product(id: "3", name: "Cherry toms"),
+          Product(id: "3", name: "Cherry toms",quantity: 6),
           Product(
             id: "4",
             name: "Spinach",

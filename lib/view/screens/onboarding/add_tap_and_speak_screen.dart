@@ -11,6 +11,7 @@ import '../../../config/constants/app_colors.dart';
 import '../../../config/routes/routes_name.dart';
 import '../../../generated/assets.dart';
 import '../../widget/my_text_widget.dart';
+import '../list/search_bottom_sheet.dart';
 
 class AddTapAndSpeakScreen extends StatefulWidget {
   const AddTapAndSpeakScreen({super.key});
@@ -21,7 +22,7 @@ class AddTapAndSpeakScreen extends StatefulWidget {
 
 class _AddTapAndSpeakScreenState extends State<AddTapAndSpeakScreen>
     with TickerProviderStateMixin {
-  final RxBool isRecording = false.obs;
+  final RxBool isRecording = true.obs;
   final TextEditingController _textController = TextEditingController();
   late AnimationController _pulseController;
   late Animation<double> _pulseAnimation;
@@ -260,6 +261,7 @@ class _AddTapAndSpeakScreenState extends State<AddTapAndSpeakScreen>
 
   Widget _buildTextInput() {
     return MyTextField(
+      onTap: () => SearchBottomSheet.show(context),
       controller: _textController,
       hint: "Type here...",
       suffix: GestureDetector(

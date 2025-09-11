@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildProductTile(Product product) {
     return GestureDetector(
-      onLongPress: () => EditItemSheet.show(product),
+      onLongPress: () => EditItemSheet.show(product,context),
       child: Column(
         children: [
           Container(

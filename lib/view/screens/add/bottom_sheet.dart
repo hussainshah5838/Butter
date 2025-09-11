@@ -540,7 +540,7 @@ class MyBottomSheet {
                     onTap: () {
                       DialogHelper.deleteCategoryDialog(context);
                     },
-                    buttonText: "Delete shopping",
+                    buttonText: "Delete category",
                     textColor: kRedColor,
                   ),
                 ],

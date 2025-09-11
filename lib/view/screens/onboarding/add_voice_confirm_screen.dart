@@ -19,11 +19,11 @@ class _AddVoiceConfirmScreenState extends State<AddVoiceConfirmScreen> {
   /// DUMMY DATA WILL BE REPLACED WITH REAL DATA
   List<ProductItem> items = [
     ProductItem(title: "Bananas"),
-    ProductItem(title: "Carrots", quantity: "1"),
+    ProductItem(title: "Carrots", quantity: "8"),
     ProductItem(title: "Cherry toms"),
     ProductItem(title: "Olive oil"),
     ProductItem(title: "Bananas"),
-    ProductItem(title: "Carrots", quantity: "1"),
+    ProductItem(title: "Carrots", quantity: "3"),
     ProductItem(title: "Cherry toms"),
     ProductItem(title: "Olive oil"),
     ProductItem(title: "Bananas"),
@@ -216,14 +216,10 @@ class _AddVoiceConfirmScreenState extends State<AddVoiceConfirmScreen> {
             if (trailingText != null) ...[
               16.horizontalSpace,
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                 decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.05),
-                  borderRadius: BorderRadius.circular(16.r),
-                  border: Border.all(
-                    color: Colors.black.withValues(alpha: 0.1),
-                    width: 1,
-                  ),
+                  color: kYellowColor.withAlpha(100),
+                  borderRadius: BorderRadius.circular(4.r),
                 ),
                 child: MyText(
                   text: trailingText,

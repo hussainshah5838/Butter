@@ -127,6 +127,7 @@ class MyBorderButton extends StatelessWidget {
     this.mBottom,
     this.mTop,
     this.textColor,
+    this.backgroundColor
   });
 
   final String buttonText;
@@ -135,7 +136,7 @@ class MyBorderButton extends StatelessWidget {
   FontWeight? weight;
   Widget? child;
   double? radius;
-  Color? borderColor, textColor;
+  Color? borderColor, textColor,backgroundColor;
   double? mTop, mBottom;
 
   @override
@@ -145,7 +146,7 @@ class MyBorderButton extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 25),
-        color: Colors.transparent,
+        color: backgroundColor ?? Colors.transparent,
         border: Border.all(
           width: 1.0,
           color: borderColor ?? Colors.black.withValues(alpha: 0.25),

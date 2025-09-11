@@ -19,7 +19,7 @@ class SelectLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(RouteName.onboardingNameScreen),
+      //onTap: () => Get.toNamed(RouteName.onboardingNameScreen),
       child: Scaffold(
         body: Center(
           child: Padding(
@@ -52,7 +52,9 @@ class SelectLoginScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 CustomButton(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(RouteName.onboardingNameScreen);
+                  },
                   buttonText: "",
                   customChild: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +71,9 @@ class SelectLoginScreen extends StatelessWidget {
                 ),
                 10.verticalSpace,
                 CustomButton(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(RouteName.onboardingNameScreen);
+                  },
                   buttonText: "",
                   customChild: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

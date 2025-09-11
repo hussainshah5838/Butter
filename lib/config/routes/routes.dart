@@ -12,9 +12,12 @@ import 'package:flutter/material.dart';
 
 import '../../config/routes/routes_name.dart';
 import '../../view/screens/categories_screen/categories_screen.dart';
+import '../../view/screens/house_hold_screen/house_hold_screen.dart';
 import '../../view/screens/launch/select_login_screen.dart';
 import '../../view/screens/onboarding/add_tap_and_speak_screen.dart';
 import '../../view/screens/onboarding/add_voice_confirm_screen.dart';
+import '../../view/screens/onboarding/join_via_deep_link.dart';
+import '../../view/screens/onboarding/onboarding_exist_house_hold_success_screen.dart';
 import '../../view/screens/onboarding/onboarding_name_screen.dart';
 import 'package:get/get.dart';
 import '../../view/screens/onboarding/onboarding_household_screen.dart';
@@ -28,7 +31,7 @@ class AppRoutes {
     ),
     GetPage(
       name: RouteName.onboardingNameScreen,
-      page: () => const OnboardingNameScreen(),
+      page: () => OnboardingNameScreen(),
     ),
     GetPage(
       name: RouteName.onboardingHouseholdScreen,
@@ -36,7 +39,7 @@ class AppRoutes {
     ),
     GetPage(
       name: RouteName.onboardingCreateScreen,
-      page: () => const OnboardingCreateScreen(),
+      page: () => OnboardingCreateScreen(),
     ),
     GetPage(
       name: RouteName.onboardingSuccessScreen,
@@ -52,7 +55,16 @@ class AppRoutes {
     ),
     GetPage(
       name: RouteName.onboardingHouseholdJoinScreen,
-      page: () => const OnboardingHouseholdJoinScreen(),
+      page: () => OnboardingHouseholdJoinScreen(),
+    ),
+    GetPage(
+      name: RouteName.onboardingExistHouseHoldSuccessScreen,
+      page: () => const OnboardingExistHouseHoldSuccessScreen(),
+    ),
+
+    GetPage(
+      name: RouteName.joinViaDeepLink,
+      page: () => const JoinViaDeepLink(),
     ),
 
     GetPage(name: RouteName.main, page: () => const Main()),
@@ -64,6 +76,10 @@ class AppRoutes {
     GetPage(
       name: RouteName.categoriesScreen,
       page: () => const CategoriesScreen(),
+    ),
+    GetPage(
+      name: RouteName.houseHoldScreen,
+      page: () => const HouseHoldScreen(),
     ),
   ];
 }

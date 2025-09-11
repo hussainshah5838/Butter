@@ -11,7 +11,8 @@ import '../../../config/constants/app_colors.dart';
 import '../../../config/routes/routes_name.dart';
 
 class OnboardingNameScreen extends StatelessWidget {
-  const OnboardingNameScreen({super.key});
+  OnboardingNameScreen({super.key});
+  final RxString name = ''.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class OnboardingNameScreen extends StatelessWidget {
                 ),
                 35.verticalSpace,
                 TextField(
+                  onChanged: (value) => name.value = value,
                   style: TextStyle(
                     fontSize: 32.sp,
                     fontWeight: FontWeight.w500,
@@ -67,10 +69,27 @@ class OnboardingNameScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 Spacer(),
-                MyBorderButton(
-                  buttonText: "Looks good",
-                  onTap: () => Get.toNamed(RouteName.onboardingHouseholdScreen),
-                  height: 50.h,
+                Obx(
+                  () => MyBorderButton(
+                    buttonText: "Looks good",
+                    onTap:
+                        name.value.isNotEmpty
+                            ? () =>
+                                Get.toNamed(RouteName.onboardingHouseholdScreen)
+                            : () {},
+                    height: 50.h,
+                    backgroundColor: name.value.isNotEmpty
+                        ? kYellowColor
+                        : Colors.transparent,
+                    borderColor:
+                        name.value.isNotEmpty
+                            ? kYellowColor
+                            : Colors.black.withOpacity(0.25),
+                    textColor:
+                        name.value.isNotEmpty
+                            ? kBlackColor
+                            : Colors.black.withOpacity(0.25),
+                  ),
                 ),
               ],
             ),

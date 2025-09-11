@@ -4,10 +4,12 @@ class Assets {
 
   static const String imagesAdd = 'assets/images/Add.png';
   static const String imagesAddYellowButton = 'assets/images/Add_yellow_button.png';
+  static const String imagesAddbutton = 'assets/images/Addbutton.png';
   static const String imagesChat = 'assets/images/Chat.png';
   static const String imagesList = 'assets/images/List.png';
   static const String imagesMarge = 'assets/images/Marge.png';
   static const String imagesMic = 'assets/images/Mic.png';
+  static const String imagesMinusbutton = 'assets/images/Minusbutton.png';
   static const String imagesPpf = 'assets/images/ppf.png';
   static const String svgApple = 'assets/svg/Apple.svg';
   static const String svgArrowBack = 'assets/svg/Arrow_back.svg';
@@ -18,5 +20,7 @@ class Assets {
   static const String svgProcessing = 'assets/svg/processing.svg';
   static const String svgSoundwaves = 'assets/svg/Soundwaves.svg';
   static const String svgStop = 'assets/svg/Stop.svg';
+  static const String svgZ1 = 'assets/svg/z1.svg';
+  static const String svgZ2 = 'assets/svg/z2.svg';
 
 }

@@ -37,7 +37,7 @@ class ShoppingModeSheet {
                 ),
                 IconButton(
                   onPressed: () => Get.back(),
-                  icon: Icon(Icons.close, color: Colors.grey[600], size: 24.sp),
+                  icon: Icon(Icons.keyboard_arrow_down_sharp, color: Colors.grey[600], size: 28.sp),
                 ),
               ],
             ),
@@ -108,90 +108,96 @@ class ShoppingModeSheet {
                               color: kBlackColor,
                               fontFamily: AppFonts.lexend,
                             ),
-                            12.verticalSpace,
+                            8.verticalSpace,
 
                             // Products in this category
                             ...products.map(
-                              (product) => Container(
-                                margin: EdgeInsets.only(bottom: 12.h),
-                                padding: EdgeInsets.all(12.w),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[50],
-                                  borderRadius: BorderRadius.circular(8.r),
-                                  border: Border.all(
-                                    color: Colors.grey[200]!,
-                                    width: 1.w,
-                                  ),
-                                ),
-                                child: Row(
-                                  children: [
-                                    // Checkmark
-                                    Container(
-                                      width: 20.w,
-                                      height: 20.w,
-                                      margin: EdgeInsets.only(right: 12.w),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: kYellowColor,
-                                        border: Border.all(
-                                          color: kYellowColor,
-                                          width: 2.w,
-                                        ),
+                              (product) => Column(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(bottom: 5.h),
+                                    padding: EdgeInsets.all(12.w),
+                                    /*decoration: BoxDecoration(
+                                      color: Colors.grey[50],
+                                      borderRadius: BorderRadius.circular(8.r),
+                                      border: Border.all(
+                                        color: Colors.grey[200]!,
+                                        width: 1.w,
                                       ),
-                                      child: Icon(
-                                        Icons.check,
-                                        color: Colors.white,
-                                        size: 14.sp,
-                                      ),
-                                    ),
-
-                                    // Product Info
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          MyText(
-                                            text: product.name,
-                                            size: 16.sp,
-                                            weight: FontWeight.w600,
-                                            color: kBlackColor,
-                                          ),
-                                          if (product.subtitle != null) ...[
-                                            4.verticalSpace,
-                                            MyText(
-                                              text: product.subtitle!,
-                                              size: 13.sp,
-                                              weight: FontWeight.w400,
-                                              color: Colors.grey[600]!,
+                                    ),*/
+                                    child: Row(
+                                      children: [
+                                        // Checkmark
+                                        Container(
+                                          width: 20.w,
+                                          height: 20.w,
+                                          margin: EdgeInsets.only(right: 12.w),
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: kYellowColor,
+                                            border: Border.all(
+                                              color: kYellowColor,
+                                              width: 2.w,
                                             ),
-                                          ],
-                                        ],
-                                      ),
-                                    ),
-
-                                    // Quantity Badge
-                                    if (product.quantity > 1)
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 8.w,
-                                          vertical: 4.h,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: kYellowColor.withAlpha(100),
-                                          borderRadius: BorderRadius.circular(
-                                            12.r,
+                                          ),
+                                          child: Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                            size: 14.sp,
                                           ),
                                         ),
-                                        child: MyText(
-                                          text: "×${product.quantity}",
-                                          size: 12.sp,
-                                          weight: FontWeight.w600,
-                                          color: kBlackColor,
+
+                                        // Product Info
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              MyText(
+                                                text: product.name,
+                                                size: 16.sp,
+                                                weight: FontWeight.w600,
+                                                color: kBlackColor,
+                                              ),
+                                              if (product.subtitle != null) ...[
+                                                4.verticalSpace,
+                                                MyText(
+                                                  text: product.subtitle!,
+                                                  size: 13.sp,
+                                                  weight: FontWeight.w400,
+                                                  color: Colors.grey[600]!,
+                                                ),
+                                              ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                  ],
-                                ),
+
+                                        // Quantity Badge
+                                        if (product.quantity > 1)
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 10.w,
+                                              vertical: 6.h,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: kYellowColor.withAlpha(100),
+                                              borderRadius: BorderRadius.circular(
+                                                6.r,
+                                              ),
+                                            ),
+                                            child: MyText(
+                                              text: "${product.quantity}",
+                                              size: 12.sp,
+                                              weight: FontWeight.w600,
+                                              color: kBlackColor,
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(),
+                                  6.verticalSpace,
+                                ],
                               ),
                             ),
                           ],

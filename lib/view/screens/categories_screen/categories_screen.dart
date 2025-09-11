@@ -6,6 +6,7 @@ import '../../../config/constants/app_fonts.dart';
 import '../../../config/constants/app_sizes.dart';
 import '../../widget/custom_appbar.dart';
 import '../../widget/my_text_widget.dart';
+import 'add_category_bottom_sheet.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -26,7 +27,11 @@ class CategoriesScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "",
         actions: [
-          MyText(text: "+ Add", size: 14, weight: FontWeight.w600),
+          GestureDetector(
+            onTap: (){
+              AddCategoryBottomSheet.addCategorySheet(context);
+            },
+              child: MyText(text: "+ Add", size: 14, weight: FontWeight.w600)),
           SizedBox(width: 15),
         ],
       ),
